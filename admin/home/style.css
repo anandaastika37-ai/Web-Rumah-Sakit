@@ -1,0 +1,465 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+
+:root{
+    --font-Poppins : "Poppins", sans-serif;
+    --font--Montserrat : "Montserrat", sans-serif;
+    --font-Roboto :  "Roboto", sans-serif;
+    --color-biru : #2e479b;
+    --color-biru-muda : #0044ff;
+    --color-abu-abu : #EAEFEF;
+
+
+}
+
+
+body{
+    background-color: #fafafa;
+}
+
+.mainContainer{
+    display: flex;
+}
+/* <!-- Navbar area --> */
+
+.navbarContainer{
+    background-color: white;
+    height: 100vh;
+    width: 15%;
+    border: var(--color-abu-abu) solid .5px;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    justify-content: space-around;
+    position: fixed;
+}
+
+.top-side{
+    margin-top: 30px;
+    width: 100%;
+    height: 75vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.logo > h3{
+    font-family: var(--font--Montserrat);
+    color: var(--color-biru);
+    font-size: 1.4rem;
+
+}
+
+.navbar{
+    font-family: var(--font-Roboto);
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.navbar > ul{
+    margin-left: 5px;
+}
+
+.navbar > ul > li {
+    margin-top: 20px;
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin: 20px;
+    list-style-type: none;
+    color: black;
+}
+
+.btn-list > ul > li{
+    list-style-type: none;
+}
+
+.btn-list > ul > li > a{
+    margin-top: 10px;
+    font-weight: 400;
+    font-size: 0.9rem;
+    list-style-type: none;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: black;
+    position: relative;
+    cursor: pointer;
+    padding: 5px;
+    text-decoration: none;
+}
+
+.btn-list > ul > li > a:hover{
+    background-color: #9494f53b;
+    color: #4300fa;
+}
+
+.btn-list > ul > li > a::before{
+    content: "";
+    position: absolute;
+    left: -10px;
+    width: 3px;
+    height: 0;
+    background-color: #3737e7;
+    border-radius: 3px;
+    transition: .2s ease-in-out;
+}
+
+.btn-list > ul > li > a:hover:before{
+    height: 25px;
+}
+
+
+.btn-list > ul > li >  a > i{
+    color: var(--color-biru-muda);
+}
+
+
+.bottom-side{
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-around;
+}
+
+.btn-sistem{
+    margin-left: 40px;
+}
+
+.btn-sistem > button{
+    font-size: .8rem;
+    border: none;
+    background: none;
+    outline: none;
+    color: white;
+    font-weight: 500;
+    background-color: #392edd;
+    padding: 10px;
+    border-radius: 5px;
+
+}
+
+.btn-sistem > button:hover{
+    background-color: #9a75df;
+}
+.btn-sistem > button > i{
+    margin-right: 10px;
+    color: white;
+}
+
+.profile-admin{
+    margin-left: 40px;
+    width: 160px;
+    padding: 5px;
+    border-radius: 10px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+    font-size: 1.1rem;
+    font-family: var(--font-Poppins);
+    color: gray;
+    border: 1px #c9c6c6 solid;
+    font-weight: 600;
+}
+
+.profile-admin > img{
+    background-color: #206999;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+ /* <!-- navbar end --> */
+
+ /* content area */
+.contentContainer{
+    margin-top: 20px;
+    width: 100%;
+    margin-left:  350px;
+}
+/* tentang rumah sakit */
+.aboutHostpital{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.deskripsi-about{
+    width: 60%;
+}
+
+.deskripsi-about > h1{
+    font-size: 7rem;
+    font-family: var(--font--Montserrat);
+    font-weight: 800;
+    color: rgb(70, 70, 70);
+}
+.deskripsi-about > h1 > span{
+    color: rgb(67, 146, 67);
+}
+
+.deskripsi-about > h3{
+    width: 80%;
+    color: rgb(141, 141, 141);
+    font-weight: 600;
+    font-family: var(--font-Roboto);
+    font-size: 2.2rem;
+}
+
+.deskripsi-about > p{
+    width: 80%;
+    margin-top: 30px;
+    font-size: 1.4rem;
+    color: #bdbdbd;
+    font-family: sans-serif;
+}
+
+
+
+.img-about > img{
+    width: 550px;
+    border-radius: 10px;
+}
+
+/* tentang rumah sakit end */
+/* visi misi */
+.visi-misi{
+    margin-top: 40px;
+    width: 95%;
+    display: flex;
+    align-items: start;
+    justify-content: space-around;
+}
+
+.visi-img{
+    width: 50%;
+    position: relative;
+}
+.visi-img > img{
+    width: 450px;
+    border-radius: 10px;
+}
+
+.room1{
+    filter: brightness(90%);
+}
+
+.room2{
+    position: absolute;
+    bottom: -100px;
+    left: 100px;
+}
+
+.visi-misi-side{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.box{
+    width: 90%;
+    height: 250px;
+    border: 1px rgb(207, 207, 207) solid;
+    border-left: #53c980 20px solid;
+    border-radius: 10px;
+    font-family: var(--font-Poppins);
+    padding: 20px;
+    transition: .3s;
+}
+
+.box:hover{
+    border-left: #369b5d 20px solid;
+}
+
+.box > h3{
+    font-size: 2.5rem;
+    color: #118f11;
+}
+
+.box > h3 > i{
+    font-size: 2.5rem;
+    color: #37b837;
+}
+
+
+.visi > h5{
+    margin-top: 5px;
+    width: 90%;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: rgb(122, 158, 122);
+}
+
+.visi > p{
+    margin-top: 20px;
+    color: #9b9b9b;
+    border-left: 2px solid #c0c0c0;
+    padding-left: 15px;
+    font-style: italic;
+    font-size: .9rem;
+}
+
+.box:hover.visi > p{
+    color: #575757;
+    border-left: 2px solid #575757;
+}
+
+.misi > ol {
+    padding-left: 20px;
+}
+
+
+.misi ol > li{
+    font-size: 1rem;
+    color: #95a095;
+}
+
+.box:hover.misi > ol > li{
+    color: #575757;
+}
+/* visi misi end */
+/* informasi rumah sakit */
+.informasi-hospital{
+    display: grid;
+    width: 95%;
+    height: 40vh;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 10px;
+    margin-top: 100px;
+}
+
+.box-info{
+    background-color: #118f11;
+    border-radius: 10px;
+    transition: .4s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.box-info:hover{
+    transform: translateY(-10px);
+    box-shadow: 0px 10px 15px 0px #5d5d5d;
+}
+
+.gambar{
+    /* background-color: rgb(255, 246, 246); */
+    width: 30%;
+    height: 80%;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.data{
+    width: 60%;
+}
+
+.container-jenis{
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.jenis-jenis-dokter{
+    background-color: white;
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: var(--font-Roboto);
+    color: rgb(29, 177, 21);
+}
+.jenis-jenis-dokter > h4{
+    font-size: 3rem;
+    color: #118f11;
+}
+.data > h3{
+    font-size: 3rem;
+    color: white;
+    font-family: var(--font--Montserrat);
+}
+
+
+.data > h4{
+    font-size: 5rem;
+    color: white;
+    font-family: var(--font--Montserrat);
+}
+
+.data > button{
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+.data > button > a{
+    text-decoration: none;
+    color: #118f11;
+}
+
+.gender{
+    background-color: white;
+    width: 50%;
+    display: flex;
+    align-items: start;
+    justify-content: space-around;
+    flex-direction: column;
+    font-family: var(--font-Roboto);
+    font-size: 2rem;
+    border-radius: 5px;
+    padding: 10px;
+    color: #249f66;
+}
+
+.dokter{
+    background-color: #5eb344;
+}
+
+.perawat{
+    background-color: #1d9d5d;
+}
+
+.poliKlinik{
+    background-color: #599f75;
+}
+
+.ruangan{
+    background-color: #547b4b;
+}
+
+/* informasi rumah sakit end */
+
+ /* content end */

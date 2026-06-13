@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Dokter</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="form-container">
+        <form action="" method="">
+            <div class="input-container first-form">
+                <h2>Form Tambah Dokter</h2>
+                <div class="input-tabel">
+                    <div class="input">
+                        <label for="">Foto</label>
+                        <input type="text">
+                    </div>
+                    <div class="input">
+                        <label for="namaLengkap">Nama Lengkap</label>
+                        <input type="text" id="namaLengkap">
+                    </div>
+                    <div class="input">
+                        <label for="namaPanggilan">Nama Pangilan</label>
+                        <input type="text" id="namaPanggilan">
+                    </div>
+                    <div class="input">
+                        <label for="email">Email</label>
+                        <input type="text" id="email">
+                    </div>
+                    <div class="input">
+                        <label for="noHp">Nomor Telepon</label>
+                        <input type="text" id="noHp">
+                    </div>
+                </div>
+                <div class="btn-form">
+                    <button><a href="index.html">Cancel</a></button>
+                    <button id="nextFirst" type="button">Next</button>
+                </div>
+            </div>
+            <div class="input-container second-form">
+                <h2>Form Tambah Dokter</h2>
+                <div class="input-tabel">
+                    <div class="input">
+                        <label for="tanggalLahir">Tanggal Lahir</label>
+                        <input type="date" id="tanggalLahir">
+                    </div>
+                    <div class="input">
+                        <label for="tempatLahir">Tempat Lahir</label>
+                        <input type="text" id="tempatLahir">
+                    </div>
+                    <div class="input-alamat">
+                        <label for="alamat">Alamat</label>
+                        <textarea name="" id="alamat"></textarea>
+                    </div>
+                    <div class="input-gender">
+                        <label for="lakiLaki">Laki - laki</label>
+                        <input type="radio" id="lakiLaki" name="gender">
+                        <label for="perempuan">Perempuan</label>
+                        <input type="radio" id="perempuan" name="gender">
+                    </div>
+                    <div class="input">
+                        <label for="spesialis">Spesialis</label>
+                        <select name="" id="spesialis">
+                            <option value="">Dokter Umum</option>
+                            <option value="">Dokter Gigi</option>
+                            <option value="">Dokter Mata</option>
+                            <option value="">Dokter Anak</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="btn-form">
+                    <button id="backSecond" type="button">Back</button>
+                    <button id="nextSecond" type="button">Next</button>
+                </div>
+            </div>
+            <div class="input-container input-jadwal-dokter">
+                <h2>Form Tambah Jadwal Dokter</h2>
+                <div class="input-tabel">
+                    <div class="input">
+                        <label for="poli">Poli/Bagian</label>
+                        <input type="text" id="poli">
+                    </div>
+                    <div class="input">
+                        <label for="hariPraktik">Hari Praktik</label>
+                        <input type="text" id="hariPraktik">
+                    </div>
+                    <div class="input">
+                        <label for="jamPraktik">Jam Praktik</label>
+                        <input type="time" id="jamPraktik">
+                    </div>
+                    <div class="input number">
+                        <label for="ruangan">Ruangan Praktik</label>
+                        <input type="number" id="ruangan">
+                    </div>
+                </div>
+                <div class="btn-form">
+                    <button id="backThird" type="button">Back</button>
+                    <button type="submit" name="submit">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
