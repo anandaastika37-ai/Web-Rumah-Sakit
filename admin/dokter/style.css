@@ -200,7 +200,7 @@ body{
 .analisa-data{
     display: grid;
     width: 95%;
-    height: 100vh;
+    height: 120vh;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr ifr ifr 1fr 1fr;
     gap: 10px;
@@ -213,37 +213,284 @@ body{
     grid-column-start: 1;
     grid-column-end: 4;
     grid-row-start: 1;
-    grid-row-end: 3;
+    grid-row-end: 2;
     background-color: #50b485;
     border: 1px #bfbfbf solid;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-left: 30px solid rgb(18, 96, 69);
+    border-radius: 20px 5px 5px 20px;
 }
+
+.icon {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon > i{
+    font-size: 20rem;
+    color: #0a4236;
+}
+.ket-jmlh-dokter{
+    width: 70%;
+}
+
+.ket-jmlh-dokter > h3{
+    font-size: 3rem;
+    font-family: var(--font--Montserrat);
+    color: white;
+    font-weight: 800;
+}
+
+.ket-jmlh-dokter > h4 {
+    font-size: 1.6rem;
+    display: inline-block;
+    font-family: var(--font-Roboto);
+    color: #ffffff;
+    margin-top: 10px;
+    background-color: #026e56;
+    border: 1px solid rgb(109, 232, 185);
+    border-radius: 10px;
+    padding: 15px;
+}
+.ket-jmlh-dokter > p{
+    width: 80%;
+    margin-top: 10px;
+    font-family: var(--font-Poppins);
+    color : white;
+    font-size: 1.2rem;
+
+}
+
+.btn-jmlh-dokter {
+    display: flex;
+    margin-top: 20px;
+    align-items: center;
+    gap: 10px;
+}
+
+.icons{
+    margin-top: 20px;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.icons > i {
+    background-color: #026e56;
+    padding: 20px;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 1.6rem;
+    border: 1px solid rgb(109, 232, 185);
+}
+
+.btn-jmlh-dokter > button{
+    width: 30%;
+    padding: 15px 20px;
+    border-radius: 5px;
+    border: 1px solid rgb(109, 232, 185);
+    background-color: #0a4236;
+}
+
+.btn-jmlh-dokter > button:hover{
+    background-color: #189177;
+}
+.btn-jmlh-dokter > button > a{
+    color: #ffffff;
+    text-decoration: none;
+}
+
 
 .jmlh-dokter-jenis{
     background-color: #cf3c3c;
     border: 1px #bfbfbf solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 20px solid rgb(103, 23, 23);
+    border-radius: 20px 5px 5px 20px;
 }
+
+
+.box-dok{
+    width: 80%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+.box-dok > ul {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.box-dok > ul > li{
+    list-style-type: none;
+    font-family: var(--font-Poppins);
+    color: white;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    justify-content: center;
+    font-size: .8rem;
+    font-weight: 600;
+}
+
+
+.box-dok > ul  > li > span{
+    background-color: #7e261e;
+    border: 1px rgb(210, 142, 142) solid;
+    border-radius: 5px;
+    font-weight: 600;
+    color: #ffffff;
+    padding: 20px 25px;
+    font-size: 2.3rem;
+    margin-top: 5px;
+}
+
+
 
 .jumlah-dokter-gender{
-    background-color: #e3d44a;
+    background-color: #c3b538;
     border: 1px #bfbfbf solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 20px solid rgb(112, 99, 24);
+    border-radius: 20px 5px 5px 20px;
 }
 
-.rata-rata-usia{
+.box-2{
+    width: 70%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.box-2 > ul {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+    height: 100%;
+}
+
+.box-2 > ul > li{
+    font-weight: 600;
+    list-style-type: none;
+    font-family: var(--font-Poppins);
+    color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: .8rem;
+}
+
+
+.box-2 > ul > li > span{
+    background-color: #988822;
+    border: 1px rgb(255, 250, 225) solid;
+    border-radius: 5px;
+    font-weight: 600;
+    color: #ffffff;
+    padding: 20px 25px;
+    font-size: 2.3rem;
+    margin-top: 5px;
+}
+
+.rata-umur > h4{
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
+.rata-umur > span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+}
+
+.status{
     background-color: rgb(169, 60, 173);
     border: 1px #bfbfbf solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 20px solid rgb(82, 60, 95);
+    border-radius: 20px 5px 5px 20px;
 }
+
+.box-3{
+    width: 70%;
+    height: 70%;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.box-3 > ul {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: start;
+    height: 100%;
+}
+
+.box-3 > ul > li{
+    font-weight: 600;
+    list-style-type: none;
+    font-family: var(--font-Poppins);
+    color: white;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: .6rem;
+}
+
+
+.box-3 > ul > li > span{
+    background-color: #691d73;
+    border: 1px rgb(255, 250, 225) solid;
+    border-radius: 5px;
+    font-weight: 600;
+    color: #ffffff;
+    padding: 20px 25px;
+    font-size: 2.3rem;
+    margin-top: 5px;
+}
+
+
+
 
 .grafik-dokter-pertahun{
     grid-column-start: 1;
     grid-column-end: 3;
-    grid-row-start: 4;
-    grid-row-end: 6;
+    grid-row-start: 3;
+    grid-row-end: 5;
     border: 1px #dcdcdc solid;
     background-color: white;
 }
 .grafik-persentase{
-    grid-row-start: 4;
-    grid-row-end: 6;
+    grid-row-start: 3;
+    grid-row-end: 5;
     border: 1px #dcdcdc solid;
     background-color: white;
 }
@@ -492,8 +739,9 @@ body{
     border-radius: 5px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     flex-direction: column;
+    padding: 10px;
 }
 
 .list-data-dokter{
@@ -548,14 +796,127 @@ body{
 }
 
 .data-dokter-aktif{
-    background-color: rgb(113, 115, 187);
+    background-color: #7173bb;
     border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 30px solid rgb(71, 60, 95);
+    border-radius: 20px 20px 5px 5px;
+
+}
+
+.box-4{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.box-4 > h2{
+    color: white;
+    font-family: var(--font--Montserrat);
+    font-size: 3.rem;
+}
+
+.box-4 > ul {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+    height: 100%;
+}
+
+.box-4 > ul > li{
+    width: 30%;
+    font-weight: 600;
+    list-style-type: none;
+    font-family: var(--font-Poppins);
+    color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: .6rem;
+}
+
+.box-4 > ul > li > h3{
+    font-size: 1.2rem;
+
+}
+
+
+.box-4 > ul > li > span{
+    background-color: #9281cc;
+    border: 1px rgb(255, 250, 225) solid;
+    border-radius: 5px;
+    font-weight: 600;
+    color: #ffffff;
+    padding: 20px 25px;
+    font-size: 2.3rem;
+    margin-top: 5px;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .data-ruangan-poli{
     background-color: rgb(67, 104, 155);
     border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 30px solid #3a406f;
+    border-radius: 20px 5px 5px 20px;
 }
+
+.box-5{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.box-5 > ul {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: start;
+    height: 100%;
+}
+
+.box-5 > ul > li{
+    font-weight: 600;
+    list-style-type: none;
+    font-family: var(--font-Poppins);
+    color: white;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: 1rem;
+}
+
+
+.box-5 > ul > li > span{
+    background-color: #5c63a3db;
+    border: 1px rgb(255, 250, 225) solid;
+    border-radius: 5px;
+    font-weight: 600;
+    color: #ffffff;
+    padding: 20px 25px;
+    font-size: 2.4rem;
+    margin-top: 5px;
+}
+
+
 
 .jadwal-dokter{
     display: grid;
@@ -679,7 +1040,7 @@ body{
     flex-direction: column;
     background-color: white;
     width: 40%;
-    height: 50vh;
+    height: 60vh;
     padding: 30px;
      border-radius: 10px;
 
@@ -691,7 +1052,7 @@ body{
 
 .input-tabel{
     width: 100%;
-    height: 30vh;
+    height: 40vh;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -708,7 +1069,7 @@ body{
 }
 
 .input > input{
-    width: 70%;
+    width: 60%;
     height: 30px;
     padding: 5px;
     border-radius: 2px;
@@ -764,20 +1125,20 @@ body{
 
 .input-alamat > textarea{
     resize: none;
-    width: 70%;
+    width: 60%;
     height: 100px;
 }
 
 .input-gender{
     font-family: var(--font-Roboto);
-    width: 80%;
+    width: 50%;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
 .input > select{
-    width: 70%;
+    width: 40%;
     height: 30px;
     padding: 5px;
     border-radius: 2px;

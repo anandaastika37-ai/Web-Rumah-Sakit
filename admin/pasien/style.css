@@ -17,7 +17,7 @@
 
 
 body{
-    background-color: #fafafa;
+    background-color: #f3f3f3;
 }
 
 .mainContainer{
@@ -194,4 +194,197 @@ body{
     margin-left:  350px;
 }
 
+.analisa-data-container{
+    display: grid;
+    width: 95%;
+    height: 120vh;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+.data-container{
+    border-radius: 5px;
+}
+
+.analisa-1{
+    background-color: #397a39;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.analisa-2{
+    background-color: #235b2d;
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+
+.analisa-3{
+    background-color: #396130;
+}
+.analisa-4{
+    background-color: #0d6930;
+}
+.analisa-5{
+    background-color: #18774a;
+}
+.analisa-6{
+    background-color: #3a6843;
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+.analisa-7{
+    background-color: #29843e;
+    grid-column-start: 2;
+    grid-column-end: 4;
+}
+
+.data-pasien-container{
+    width: 95%;
+    height: 200vh;
+    margin-top: 40px;
+}
+
+.btn-crud{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.search{
+    width: 70%;
+}
+
+.search > form{
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 5px;
+}
+
+.search > form > input{
+    width: 70%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgb(221, 221, 221);
+    outline: none;
+}
+
+.search > form > button{
+    cursor: pointer;
+    padding: 10px;
+    background-color: #3c9a6e;
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+
+}
+.search > form > button:hover{
+    background-color: #1d5c3f;
+}
+
+.create > button{
+    cursor: pointer;
+    padding: 10px;
+    background-color: #3c9a6e;
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+}
+
+.create > button > a{
+    color: white;
+    text-decoration: none;
+}
+
+.create > button:hover{
+    background-color: #1d5c3f;
+}
+
+.container-data{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.card{
+    width: 450px;
+    border: 1px rgb(212, 212, 212) solid;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.profile-pasien{
+    background-color: #0c9756;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.profile-pasien > img{
+    width: 200px;
+    border-radius: 50%;
+    border: 4px solid white;
+}
+
+.data-singkat-pasien{
+    padding: 10px;
+}
+
+.data-singkat-pasien > ul{
+    margin-top: 10px;
+    font-family: var(--font-Roboto);
+    font-size: 1.2rem;
+    color: #565656;
+}
+
+.data-singkat-pasien > ul > li{
+    list-style-type: none;
+}
+
+.data-singkat-pasien > ul > li:first-child{
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: var(--font--Montserrat);
+    color: #363636;
+}
+
+.btn-profil{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+.btn-profil > button{
+    border: none;
+    outline: none;
+    padding: 10px;
+    background-color: #105334;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btn-profil > button:hover{
+    background-color: #478669;
+}
+.btn-profil > button > a{
+    text-decoration: none;
+    color: #ffffff;
+}
+.btn-profil > button:first-child{
+    width: 80%;
+    background-color: #0c9756;
+}
+.btn-profil > button:first-child:hover{
+    background-color: #176942;
+}
  /* content end */
