@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Halaman Dokter</title>
+    <title>Halaman Poli Klinik</title>
     <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,31 +24,28 @@
                     <li class="Btn-Master-Data btn-list">
                         <span>Master Data</span>
                         <ul class="master-data navList">
-                            <li><a href="">Pasien<i class="fa-solid fa-bed"></i></a></li>
-                            <li><a href="">Poli Klinik<i class="fa-solid fa-house-medical"></i></a></li>
-                            <li><a href="">Dokter<i class="fa-solid fa-user-doctor"></i></a></li>
+                            <li><a href="../pasien/index.html">Pasien<i class="fa-solid fa-bed"></i></a></li>
+                            <li><a href="../poliKlinik/index.html">Poli Klinik<i class="fa-solid fa-house-medical"></i></a></li>
+                            <li><a href="../dokter/index.html">Dokter<i class="fa-solid fa-user-doctor"></i></a></li>
                         </ul>
                     </li>
                     <li class="Btn-transaksi btn-list">
-                        <span>Transaksi</span>
+                        <span>Pendaftaran</span>
                         <ul class="transaksi navList">
-                            <li><a href="">Pendaftaran<i class="fa-solid fa-clipboard-list"></i></a></li>
-                            <li><a href="">Antrian<i class="fa-solid fa-users"></i></a></li>
-                            <li><a href="">Rekam Medis<i class="fa-solid fa-book"></i></a></li>
+                            <li><a href="../transaksi/index.html">Pendaftaran<i class="fa-solid fa-clipboard-list"></i></a></li>
                         </ul>
                     </li>
                     <li class="Btn-laporan btn-list">
                         <span>Laporan</span>
                         <ul class="laporan navList">
-                            <li><a href="">Laporan Pasien<i class="fa-solid fa-file-lines"></i></a></li>
-                            <li><a href="">Laporan Kunjungan<i class="fa-solid fa-id-card-clip"></i></a></li>
+                            <li><a href="../laporan/index.html#pasien">Laporan Pasien<i class="fa-solid fa-file-lines"></i></a></li>
+                            <li><a href="../laporan/index.html#pengunjung">Laporan Kunjungan<i class="fa-solid fa-id-card-clip"></i></a></li>
                         </ul>
                     </li>
                     <li class="Btn-pengaturan btn-list">
                         <span>Beranda</span>
                         <ul class="pengaturan navList">
-                            <li><a href="">Profil Rumah Sakit<i class="fa-solid fa-hospital"></i></a></li>
-                            <li><a href="">Manajemen User<i class="fa-solid fa-chart-simple"></i></a></li>
+                            <li><a href="../home/home.html">Profil Rumah Sakit<i class="fa-solid fa-hospital"></i></a></li>
                         </ul>
                     </li>
                 </ul>
@@ -67,7 +64,111 @@
     <!-- navbar end -->
     <!-- content area -->
      <div class="contentContainer">
+        <div class="about-poliKlinik">
+            <div class="container-box about-1">
+                <h2>Jumlah Poli Klinik</h2>
+                <p>Halaman Poliklinik digunakan untuk mengelola seluruh data poli yang tersedia di rumah sakit, termasuk informasi dokter, jadwal praktik, jumlah pasien, dan status operasional setiap poli. Halaman ini membantu administrator dalam memantau dan mengatur layanan kesehatan secara lebih efektif dan terstruktur.</p>
+                <h3>Jumlah Ruangan :</h3>
+                <ul>
+                    <li>poli Anak
+                        <span>01-10</span>
+                    </li>
+                    <li>Poli Mata
+                        <span>01-13</span>
+                    </li>
+                    <li>Poli Umum
+                        <span>01-22</span>
+                    </li>
+                    <li>Poli THT
+                        <span>01-20</span>
+                    </li>
+                    <li>Poli Bedah
+                        <span>01-30</span>
+                    </li>
+                    <li>Poli Saraf
+                        <span>01-100</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="container-box about-2">
+                <h3>Jumlah Dokter Perpoli :</h3>
+                <ul>
+                    <li>poli Anak
+                        <span>10</span>
+                    </li>
+                    <li>Poli Mata
+                        <span>10</span>
+                    </li>
+                    <li>Poli Umum
+                        <span>10</span>
+                    </li>
+                    <li>Poli THT
+                        <span>10</span>
+                    </li>
+                    <li>Poli Bedah
+                        <span>10</span>
+                    </li>
+                    <li>Poli Saraf
+                        <span>10</span>
+                    </li>
+                </ul>
+                <h3>Jumlah Pasien Perpoli :</h3>
+                <ul>
+                    <li>poli Anak
+                        <span>10</span>
+                    </li>
+                    <li>Poli Mata
+                        <span>10</span>
+                    </li>
+                    <li>Poli Umum
+                        <span>10</span>
+                    </li>
+                    <li>Poli THT
+                        <span>10</span>
+                    </li>
+                    <li>Poli Bedah
+                        <span>10</span>
+                    </li>
+                    <li>Poli Saraf
+                        <span>10</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="container-box about-3">
 
+            </div>
+        </div>
+        <div class="dokter-poli">
+            <div class="btn-navigasi">
+                <div class="search">
+                    <form action="">
+                        <input type="text" name="search" placeholder="search list">
+                        <button type="submit" name="find">Search</button>
+                    </form>
+                </div>
+                <div class="filter">
+                    <button>Semua</button>
+                    <button>Poli Bedah</button>
+                    <button>Poli Anak</button>
+                    <button>Poli THT</button>
+                    <button>Poli Mata</button>
+                    <button>Poli Umum</button>
+                    <button>Poli Saraf</button>
+                </div>
+            </div>
+            <div class="tabel-list">
+                <div class="list-data">
+                    <ul>
+                        <li>1</li>
+                        <li>Nama</li>
+                        <li>99280183</li>
+                        <li>Spesialis</li>
+                        <li>poli Klinik</li>
+                        <li><button><a href="">selengkapnya</a></button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
      </div>
     <!-- content end -->
     </div>

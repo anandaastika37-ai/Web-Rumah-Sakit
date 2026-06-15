@@ -17,7 +17,7 @@
 
 
 body{
-    background-color: #fafafa;
+    background-color: #f3f3f3;
 }
 
 .mainContainer{
@@ -193,5 +193,221 @@ body{
     width: 100%;
     margin-left:  350px;
 }
+.about-poliKlinik{
+    width: 95%;
+    height: 100vh;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    display: grid;
+    gap: 10px;
+}
 
+.container-box{
+    background-color: #ffffff;
+    border: rgb(216, 216, 216) solid .5px;
+    border-radius: 10px;
+}
+.about-1{
+    grid-column-start: 1;
+    grid-column-end: 4;
+    padding: 20px;
+}
+
+.about-1 > h2{
+    font-family: var(--font--Montserrat);
+    font-size: 2rem;
+    color: #535353;
+}
+
+.about-1 > p{
+    font-family: var(--font-Roboto);
+    color: gray;
+    font-size: 1rem;
+    width: 50%;
+    border-left: 3px solid gray;
+    padding-left: 10px;
+    margin-top: 10px;
+}
+
+.about-1 > h3{
+    margin-top: 20px;
+    font-family: var(--font-Poppins);
+    font-size: 1.1rem;
+    color: #464646;
+}
+.about-1 > ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.about-1 > ul > li{
+    list-style-type: none;
+    font-family: var(--font-Poppins);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 30%;
+}
+.about-1 > ul > li > span{
+    width: 80%;
+    margin-top: 10px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: #438ddc;
+    border-top: 5px solid #0b519b;
+    border-radius: 10px;
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.about-2{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    padding: 20px;
+}
+
+
+.about-2 > h3{
+    margin-top: 20px;
+    font-family: var(--font-Poppins);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #464646;
+}
+.about-2 > ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.about-2 > ul > li{
+    list-style-type: none;
+    font-family: var(--font-Poppins);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 30%;
+}
+.about-2 > ul > li > span{
+    width: 80%;
+    margin-top: 10px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: #46c6ad;
+    border-top: 5px solid #0b6a62;
+    border-radius: 10px;
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.about-3{
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+.dokter-poli{
+    width: 95%;
+    height: 100vh;
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.btn-navigasi{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+}
+
+.search{
+    width: 40%;
+}
+
+.search > form > input{
+    width: 80%;
+    padding: 10px;
+    border-radius: 3px;
+    border: .5px solid rgb(191, 191, 191);
+    outline: none;
+}
+
+.btn-navigasi button{
+    padding: 10px;
+    border: none;
+    background-color: #2983de;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-navigasi button:hover{
+    background-color: #25588b;
+}
+
+.search > form > button{
+    background-color: #2932de;
+
+}
+
+.tabel-list{
+    width: 90%;
+    height: 90vh;
+    border-radius: 10px;
+    border: gray solid 1px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    padding: 20px;
+    flex-direction: column;
+}
+
+.list-data{
+    width: 90%;
+    border-radius: 10px;
+    border: .5px solid rgb(190, 190, 190);
+    padding: 25px;
+}
+
+.list-data > ul{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: var(--font-Poppins);
+}
+
+.list-data > ul >li{
+    list-style-type: none;
+}
+
+.list-data > ul > li:nth-child(2){
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.list-data > ul >li button{
+    background-color: #0044ff;
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+    outline: none;
+}
+.list-data > ul >li button > a{
+    color: white;
+    text-decoration: none;
+}
  /* content end */

@@ -387,4 +387,69 @@ body{
 .btn-profil > button:first-child:hover{
     background-color: #176942;
 }
+
+.rekam-medis-container{
+    width: 95%;
+    height: 80vh;
+    background-color: white;
+    margin-bottom: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+.rekam-medis-container > h2{
+    font-size: 2rem;
+    font-family: var(--font--Montserrat);
+    color: rgb(49, 49, 49);
+}
+.tabel-data-container{
+    width: 90%;
+    height: 80%;
+    border: rgb(220, 220, 220) 1px solid;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    flex-direction: column;
+    padding: 20px;
+
+}
+.list-data-pasien{
+    width: 95%;
+    border: rgb(220, 220, 220) 1px solid;
+    padding: 20px;
+}
+
+.list-data-pasien > ul{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #4a4a4a;
+}
+
+.list-data-pasien > ul > li{
+    list-style-type: none;
+    font-family: var(--font-Poppins);
+}
+.list-data-pasien > ul > li:nth-child(2){
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.list-data-pasien > ul > li:last-child > button{
+    border: none;
+    background-color: #0b9a57;
+    border-radius: 3px;
+    padding: 10px;
+}
+.list-data-pasien > ul > li:last-child > button:hover{
+    background-color: #105334;
+}
+.list-data-pasien > ul > li:last-child > button > a{
+    text-decoration: none;
+    color: white;
+}
  /* content end */
