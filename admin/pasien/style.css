@@ -205,12 +205,80 @@ body{
 
 .data-container{
     border-radius: 5px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.data-container > h3{
+    font-family: var(--font--Montserrat);
+    color: white;
+}
+
+.data-container > ul{
+    width: 90%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 5px;
+    flex-direction: column;
+    font-family: var(--font-Roboto);
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.data-container > ul > li{
+    border-radius: 5px;
+    width: 100%;
+    padding: 12px;
+    list-style-type: none;
+    border: 1px white solid;
+    background-color: rgba(26, 136, 12, 0.384);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .analisa-1{
     background-color: #397a39;
     grid-column-start: 1;
     grid-column-end: 3;
+}
+
+
+.deskripsi{
+    font-family: var(--font-Roboto);
+    color: white;
+    width: 90%;
+    height: 90%;
+    display: flex;
+    align-items: start;
+    gap: 10px;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.deskripsi > h3{
+    font-size: 2.4rem;
+    font-family: var(--font--Montserrat);
+}
+
+.deskripsi > span{
+    font-size: 2rem;
+    font-weight: 700;
+    border: 1px solid white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.deskripsi > p{
+    font-size: 1.4rem;
+    border-left: 3px #ffffff solid;
+    padding-left: 10px;
+    font-style: italic;
 }
 
 .analisa-2{
@@ -452,4 +520,158 @@ body{
     text-decoration: none;
     color: white;
 }
+
+/* form tambah Pasien */
+.form-container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3e63ca;
+}
+
+.form-container > form{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    background-color: white;
+    width: 40%;
+    height: 60vh;
+    padding: 30px;
+     border-radius: 10px;
+
+}
+
+.input-container > h2{
+    font-family: var(--font--Montserrat);
+}
+
+.input-tabel{
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.input{
+    font-family: var(--font-Roboto);
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.input > input{
+    width: 60%;
+    height: 30px;
+    padding: 5px;
+    border-radius: 2px;
+    outline: none;
+    border: .5px solid rgb(136, 136, 136);
+}
+
+.btn-form{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btn-form > button{
+    padding: 10px 25px;
+    background-color: #1851ed;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+}
+
+.btn-form > button:hover{
+    background-color: #0535b8;
+}
+
+.btn-form > button > a{
+    color: white;
+    text-decoration: none;
+}
+
+.first-form{
+    display: flex;
+    height: 90vh;
+}
+
+.first-form > .input-tabel{
+    height: 80%;
+}
+
+.second-form{
+    display: none;
+}
+
+.second-form > .input-tabel{
+    height: 50%;
+}
+
+.second-form > .input-tabel > .input > input{
+    width: 55%;
+}
+
+.first-form > .input-tabel{
+    height: 80%;
+}
+
+.third-form{
+    display: none;
+}
+
+.input-alamat{
+    font-family: var(--font-Roboto);
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.input-alamat > label{
+    font-family: var(--font-Roboto);
+}
+
+.input-alamat > textarea{
+    resize: none;
+    width: 60%;
+    height: 100px;
+}
+
+.input-gender{
+    font-family: var(--font-Roboto);
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.input > select{
+    width: 40%;
+    height: 30px;
+    padding: 5px;
+    border-radius: 2px;
+    outline: none;
+    border: .5px solid rgb(136, 136, 136);
+}
+
+
+/* form tambah Pasien end*/
  /* content end */
