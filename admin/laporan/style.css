@@ -1,0 +1,370 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+
+:root{
+    --font-Poppins : "Poppins", sans-serif;
+    --font--Montserrat : "Montserrat", sans-serif;
+    --font-Roboto :  "Roboto", sans-serif;
+    --color-biru : #2e479b;
+    --color-biru-muda : #0044ff;
+    --color-abu-abu : #EAEFEF;
+
+
+}
+
+
+body{
+    background-color: #f3f3f3;
+}
+
+.mainContainer{
+    display: flex;
+}
+/* <!-- Navbar area --> */
+
+.navbarContainer{
+    background-color: white;
+    height: 100vh;
+    width: 15%;
+    border: var(--color-abu-abu) solid .5px;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    justify-content: space-around;
+    position: fixed;
+}
+
+.top-side{
+    margin-top: 30px;
+    width: 100%;
+    height: 75vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.logo > h3{
+    font-family: var(--font--Montserrat);
+    color: var(--color-biru);
+    font-size: 1.4rem;
+
+}
+
+.navbar{
+    font-family: var(--font-Roboto);
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.navbar > ul{
+    margin-left: 5px;
+}
+
+.navbar > ul > li {
+    margin-top: 20px;
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin: 20px;
+    list-style-type: none;
+    color: black;
+}
+
+.btn-list > ul > li{
+    list-style-type: none;
+}
+
+.btn-list > ul > li > a{
+    margin-top: 10px;
+    font-weight: 400;
+    font-size: 0.9rem;
+    list-style-type: none;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: black;
+    position: relative;
+    cursor: pointer;
+    padding: 5px;
+    text-decoration: none;
+}
+
+.btn-list > ul > li > a:hover{
+    background-color: #9494f53b;
+    color: #4300fa;
+}
+
+.btn-list > ul > li > a::before{
+    content: "";
+    position: absolute;
+    left: -10px;
+    width: 3px;
+    height: 0;
+    background-color: #3737e7;
+    border-radius: 3px;
+    transition: .2s ease-in-out;
+}
+
+.btn-list > ul > li > a:hover:before{
+    height: 25px;
+}
+
+
+.btn-list > ul > li >  a > i{
+    color: var(--color-biru-muda);
+}
+
+
+.bottom-side{
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-around;
+}
+
+.btn-sistem{
+    margin-left: 40px;
+}
+
+.btn-sistem > button{
+    font-size: .8rem;
+    border: none;
+    background: none;
+    outline: none;
+    color: white;
+    font-weight: 500;
+    background-color: #392edd;
+    padding: 10px;
+    border-radius: 5px;
+
+}
+
+.btn-sistem > button:hover{
+    background-color: #9a75df;
+}
+.btn-sistem > button > i{
+    margin-right: 10px;
+    color: white;
+}
+
+.profile-admin{
+    margin-left: 40px;
+    width: 160px;
+    padding: 5px;
+    border-radius: 10px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+    font-size: 1.1rem;
+    font-family: var(--font-Poppins);
+    color: gray;
+    border: 1px #c9c6c6 solid;
+    font-weight: 600;
+}
+
+.profile-admin > img{
+    background-color: #206999;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+ /* <!-- navbar end --> */
+ /* content area */
+ .contentContainer {
+    margin-top: 20px;
+    width: 100%;
+    margin-left:  350px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+    flex-direction: column;
+}
+.laporan-pasien{
+    width: 95%;
+    height: 250vh;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.laporan-pasien-deskripsi{
+    width: 95%;
+    height: 10%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 30px;
+}
+.box-analisa{
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #0c7440;
+}
+.box-analisa > h3{
+    color: white;
+    font-family: var(--font--Montserrat);
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+.box-analisa > span{
+    display: inline-block;
+    color: #ffffff;
+    font-family: var(--font--Montserrat);
+    font-size: 4rem;
+    font-weight: 700;
+}
+.jumlh-like-dislike{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.jumlh-like-dislike > span{
+    display: inline-block;
+    color: #ffffff;
+    font-family: var(--font--Montserrat);
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+
+.laporan-pasien-container{
+    border: 1px solid #dedede;
+    border-radius: 10px;
+    width: 95%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: start;
+    gap: 5px;
+    padding: 15px;
+}
+
+.laporan-pasien-container > h2{
+    width: 95%;
+    padding: 10px;
+    font-size: 1.7rem;
+    font-family: var(--font--Montserrat);
+    font-style: italic;
+    color: #1d1d1d;
+}
+
+.isi-laporan-pasien{
+    font-family: var(--font-Roboto);
+    width: 95%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid #e2e2e2;
+    padding: 20px;
+    border-radius: 5px;
+}
+.isi-laporan-pasien > h3{
+    font-family: var(--font--Montserrat);
+    font-size: 1.3rem;
+    color: #1d1d1d;
+}
+.isi-laporan-pasien > span{
+    color: #666666;
+    margin-top: 5px;
+}
+.isi-laporan-pasien > p{
+    margin-top: 10px;
+    color: #313131;
+    border-left: 3px solid #8e8d8d;
+    width: 80%;
+    padding-left: 10px;
+}
+
+.btn-interaktif{
+    margin-top: 20px;
+}
+
+.btn-interaktif > button{
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    color: rgb(39, 39, 39);
+}
+
+.laporan-pengunjung{
+    width: 95%;
+    height: 250vh;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+.laporan-pengunjung-container{
+    border: 1px solid #dedede;
+    border-radius: 10px;
+    width: 95%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: start;
+    gap: 5px;
+    padding: 15px;
+}
+
+.laporan-pengunjung-container > h2{
+    width: 95%;
+    padding: 10px;
+    font-size: 1.7rem;
+    font-family: var(--font--Montserrat);
+    font-style: italic;
+    color: #1d1d1d;
+}
+.laporan-pengunjung-deskripsi{
+    width: 95%;
+    height: 10%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 30px;
+}
+
+.box-analisa-pengunjung{
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #0c5c74;
+}
+.box-analisa-pengunjung> h3{
+    color: white;
+    font-family: var(--font--Montserrat);
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+.box-analisa-pengunjung > span{
+    display: inline-block;
+    color: #ffffff;
+    font-family: var(--font--Montserrat);
+    font-size: 4rem;
+    font-weight: 700;
+}
+ /* content end */

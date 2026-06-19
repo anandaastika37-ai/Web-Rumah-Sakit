@@ -1,3 +1,17 @@
+<?php
+
+include '../funtion/funtion.php';
+
+$dataPasien = query('SELECT * FROM pasien');
+if(isset($_POST['hapus'])){
+    if(hapusDataPasien($_POST['hapus'])){
+         echo "<script>
+        alert('Data berhasil di dihapus');
+        document.location.href = 'index.php'
+        </script>";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,28 +37,28 @@
                     <li class="Btn-Master-Data btn-list">
                         <span>Master Data</span>
                         <ul class="master-data navList">
-                            <li><a href="./index.html">Pasien<i class="fa-solid fa-bed"></i></a></li>
-                            <li><a href="../poliKlinik/index.html">Poli Klinik<i class="fa-solid fa-house-medical"></i></a></li>
-                            <li><a href="../dokter/index.html">Dokter<i class="fa-solid fa-user-doctor"></i></a></li>
+                            <li><a href="./index.php">Pasien<i class="fa-solid fa-bed"></i></a></li>
+                            <li><a href="../poliKlinik/index.php">Poli Klinik<i class="fa-solid fa-house-medical"></i></a></li>
+                            <li><a href="../dokter/index.php">Dokter<i class="fa-solid fa-user-doctor"></i></a></li>
                         </ul>
                     </li>
                     <li class="Btn-transaksi btn-list">
                         <span>Transaksi</span>
                         <ul class="transaksi navList">
-                            <li><a href="../transaksi/index.html">Pendaftaran<i class="fa-solid fa-clipboard-list"></i></a></li>
+                            <li><a href="../transaksi/index.php">Pendaftaran<i class="fa-solid fa-clipboard-list"></i></a></li>
                         </ul>
                     </li>
                     <li class="Btn-laporan btn-list">
                         <span>Laporan</span>
                         <ul class="laporan navList">
-                            <li><a href="../transaksi/index.html#pasien">Laporan Pasien<i class="fa-solid fa-file-lines"></i></a></li>
-                            <li><a href="../transaksi/index.html#pengunjung">Laporan Kunjungan<i class="fa-solid fa-id-card-clip"></i></a></li>
+                            <li><a href="../transaksi/index.php#pasien">Laporan Pasien<i class="fa-solid fa-file-lines"></i></a></li>
+                            <li><a href="../transaksi/index.php#pengunjung">Laporan Kunjungan<i class="fa-solid fa-id-card-clip"></i></a></li>
                         </ul>
                     </li>
                     <li class="Btn-pengaturan btn-list">
                         <span>Beranda</span>
                         <ul class="pengaturan navList">
-                            <li><a href="../home/home.html">Profil Rumah Sakit<i class="fa-solid fa-hospital"></i></a></li>
+                            <li><a href="../home/home.php">Profil Rumah Sakit<i class="fa-solid fa-hospital"></i></a></li>
                         </ul>
                     </li>
                 </ul>
@@ -146,83 +160,40 @@
                     </form>
                 </div>
                 <div class="create">
-                    <button><a href="tambah.html">+Tambah</a></button>
+                    <button><a href="tambah.php">+Tambah</a></button>
                     <button><a href=""><i class="fa-solid fa-filter"></i>Filter</a></button>
                 </div>
             </div>
             <div class="container-data">
+                <?php foreach($dataPasien as $data) : ?>
                 <div class="card">
                     <div class="profile-pasien">
                         <img src="img/pasien.jpg" alt="">
                     </div>
                     <div class="data-singkat-pasien">
                         <ul>
-                            <li>Tono</li>
-                            <li>17</li>
-                            <li>Tabanan</li>
-                            <li>Mandor</li>
+                            <li><?= $data['nama_panggilan_pasien'] ?></li>
+                            <li>ID <?= $data['nomor_id_pasien'] ?></li>
+                            <li>
+                            <?php $tanggalLahir = $data['tanggal_lahir_pasien'];
+                                $tanggal = date_create($tanggalLahir);
+                                $tanggalSekarang = date_create('Today');
+                                $umur = date_diff($tanggal , $tanggalSekarang);
+                                echo $umur->y;
+                            ?> th</li>
+                            <li><?= $data['tempat_lahir_pasien'] ?></li>
+                            <li><?= $data['pekerjaan'] ?></li>
                         </ul>
                         <div class="btn-profil">
                             <button><a href="">Selengkapnya</a></button>
-                            <button><a href=""><i class="fa-regular fa-pen-to-square"></i></a></button>
-                            <button><a href=""><i class="fa-regular fa-trash-can"></i></a></button>
+                            <button><a href="editDataPasien.php?id=<?= $data['id_pasien'] ?>"><i class="fa-regular fa-pen-to-square"></i></a></button>
+                            <form action="" method="post">
+                                <button name="hapus" type="submit" value="<?= $data['id_pasien'] ?>"><a href=""><i class="fa-regular fa-trash-can"></i></a></button>
+                            </form>
                         </div>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="profile-pasien">
-                        <img src="img/pasien.jpg" alt="">
-                    </div>
-                    <div class="data-singkat-pasien">
-                        <ul>
-                            <li>Tono</li>
-                            <li>17</li>
-                            <li>Tabanan</li>
-                            <li>Mandor</li>
-                        </ul>
-                        <div class="btn-profil">
-                            <button><a href="">Selengkapnya</a></button>
-                            <button><a href=""><i class="fa-regular fa-pen-to-square"></i></a></button>
-                            <button><a href=""><i class="fa-regular fa-trash-can"></i></a></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="profile-pasien">
-                        <img src="img/pasien.jpg" alt="">
-                    </div>
-                    <div class="data-singkat-pasien">
-                        <ul>
-                            <li>Tono</li>
-                            <li>17</li>
-                            <li>Tabanan</li>
-                            <li>Mandor</li>
-                        </ul>
-                        <div class="btn-profil">
-                            <button><a href="">Selengkapnya</a></button>
-                            <button><a href=""><i class="fa-regular fa-pen-to-square"></i></a></button>
-                            <button><a href=""><i class="fa-regular fa-trash-can"></i></a></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="profile-pasien">
-                        <img src="img/pasien.jpg" alt="">
-                    </div>
-                    <div class="data-singkat-pasien">
-                        <ul>
-                            <li>Tono</li>
-                            <li>17</li>
-                            <li>Tabanan</li>
-                            <li>Mandor</li>
-                        </ul>
-                        <div class="btn-profil">
-                            <button><a href="">Selengkapnya</a></button>
-                            <button><a href=""><i class="fa-regular fa-pen-to-square"></i></a></button>
-                            <button><a href=""><i class="fa-regular fa-trash-can"></i></a></button>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
         <div class="rekam-medis-container">
@@ -237,8 +208,8 @@
                         <li>dr.someone</li>
                         <li>14-16-2026</li>
                         <li>
+                            <button><a href="tambahRM.php">Tambah</a></button>
                             <button><a href="">Lihat</a></button>
-                            <button><a href="">Tambah</a></button>
                             <button><a href="">Edit</a></button>
                         </li>
                     </ul>

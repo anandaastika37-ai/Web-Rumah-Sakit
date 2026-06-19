@@ -22,6 +22,7 @@ body{
 
 .mainContainer{
     display: flex;
+
 }
 /* <!-- Navbar area --> */
 
@@ -496,7 +497,7 @@ body{
 }
 .data-dokter-container{
     width: 95%;
-    height: 180vh;
+    height: auto;
     margin-top: 60px;
 }
 .cr-data{
@@ -540,15 +541,15 @@ body{
 .profile-dokter{
     margin-top: 50px;
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 30px;
-    height: 95%;
-
-
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: start;
+    align-items: start;
 }
 
 .card-profile{
+    width: 30%;
     height: 550px;
     border: .5px rgb(231, 231, 231) solid;
     border-radius: 10px;
@@ -558,7 +559,7 @@ body{
     justify-content: space-around;
     flex-direction: column;
     padding: 20px;
-
+   
 }
 .foto{
     width: 80%;
@@ -622,10 +623,13 @@ body{
 .btn-data{
     width: 100%;
     margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .selengkapnya{
-    width: 78%;
+    width: 77%;
     padding: 8px;
     background-color: #225ab3;
     color: white;
@@ -674,6 +678,10 @@ body{
     color: white;
 }
 
+.card-profile > form{
+    width: 5%;
+}
+
 .hapus{
     padding: 8px;
     background-color: #eb0606;
@@ -705,6 +713,7 @@ body{
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 10px;
+    margin-top: 40px;
     
 }
 
@@ -740,12 +749,13 @@ body{
     display: flex;
     align-items: center;
     justify-content: start;
+    gap : 10px;
     flex-direction: column;
     padding: 10px;
 }
 
 .list-data-dokter{
-    border: .5px solid #ededed;
+    border: .5px solid #cecece;
     padding: 10px;
     border-radius: 5px;
     width: 95%;
@@ -760,18 +770,19 @@ body{
 }
 
 .list-data-dokter > h3{
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    width : 15%;
     color: #2f2f2f;
 }
 
 .list-data-dokter > h4{
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 500;
     color: #4d4d4d;
 }
 
 .list-data-dokter > span{
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 500;
     color: gray;
 }

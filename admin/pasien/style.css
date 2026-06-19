@@ -378,7 +378,7 @@ body{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: start;
     gap: 20px;
 }
 
@@ -454,6 +454,24 @@ body{
 }
 .btn-profil > button:first-child:hover{
     background-color: #176942;
+}
+
+.btn-profil > form >  button {
+    border: none;
+    outline: none;
+    padding: 10px;
+    background-color: #105334;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-profil > form > button:hover{
+    background-color: #478669;
+}
+
+.btn-profil > form > button > a{
+    text-decoration: none;
+    color: #ffffff;
 }
 
 .rekam-medis-container{
@@ -672,6 +690,21 @@ body{
     border: .5px solid rgb(136, 136, 136);
 }
 
+.first-form-RM{
+    display: flex;
+}
+
+.second-form-RM{
+    display: none;
+}
+
+.hidden{
+    display: none;
+}
+
+.show{
+    display: flex;
+}
 
 /* form tambah Pasien end*/
  /* content end */

@@ -24,28 +24,28 @@
                     <li class="Btn-Master-Data btn-list">
                         <span>Master Data</span>
                         <ul class="master-data navList">
-                            <li><a href="../pasien/index.html">Pasien<i class="fa-solid fa-bed"></i></a></li>
-                            <li><a href="../poliKlinik/index.html">Poli Klinik<i class="fa-solid fa-house-medical"></i></a></li>
-                            <li><a href="../dokter/index.html">Dokter<i class="fa-solid fa-user-doctor"></i></a></li>
+                            <li><a href="../pasien/index.php">Pasien<i class="fa-solid fa-bed"></i></a></li>
+                            <li><a href="../poliKlinik/index.php">Poli Klinik<i class="fa-solid fa-house-medical"></i></a></li>
+                            <li><a href="../dokter/index.php">Dokter<i class="fa-solid fa-user-doctor"></i></a></li>
                         </ul>
                     </li>
                     <li class="Btn-transaksi btn-list">
                         <span>Pendaftaran</span>
                         <ul class="transaksi navList">
-                            <li><a href="../transaksi/index.html">Pendaftaran<i class="fa-solid fa-clipboard-list"></i></a></li>
+                            <li><a href="../transaksi/index.php">Pendaftaran<i class="fa-solid fa-clipboard-list"></i></a></li>
                         </ul>
                     </li>
                     <li class="Btn-laporan btn-list">
                         <span>Laporan</span>
                         <ul class="laporan navList">
-                            <li><a href="../laporan/index.html#pasien">Laporan Pasien<i class="fa-solid fa-file-lines"></i></a></li>
-                            <li><a href="../laporan/index.html#pengunjung">Laporan Kunjungan<i class="fa-solid fa-id-card-clip"></i></a></li>
+                            <li><a href="../laporan/index.php#pasien">Laporan Pasien<i class="fa-solid fa-file-lines"></i></a></li>
+                            <li><a href="../laporan/index.php#pengunjung">Laporan Kunjungan<i class="fa-solid fa-id-card-clip"></i></a></li>
                         </ul>
                     </li>
                     <li class="Btn-pengaturan btn-list">
                         <span>Beranda</span>
                         <ul class="pengaturan navList">
-                            <li><a href="../home/home.html">Profil Rumah Sakit<i class="fa-solid fa-hospital"></i></a></li>
+                            <li><a href="../home/home.php">Profil Rumah Sakit<i class="fa-solid fa-hospital"></i></a></li>
                         </ul>
                     </li>
                 </ul>

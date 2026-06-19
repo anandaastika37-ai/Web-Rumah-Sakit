@@ -1,3 +1,16 @@
+<?php
+
+include '../funtion/funtion.php' ;
+$dataDokter = query('SELECT * FROM dokter');
+if(isset($_POST['hapus'])){
+    if(Hapus($_POST['hapus'])){
+        echo "<script>
+        alert('Data berhasil di dihapus');
+        document.location.href = 'index.php'
+        </script>";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +28,6 @@
      <div class="mainContainer">
      <nav class="navbarContainer">
         <div class="top-side">
-
             <div class="logo">
                 <h3>Admin Dashboard</h3>
             </div>
@@ -24,28 +36,28 @@
                     <li class="Btn-Master-Data btn-list">
                         <span>Master Data</span>
                         <ul class="master-data navList">
-                            <li><a href="../pasien/index.html">Pasien<i class="fa-solid fa-bed"></i></a></li>
-                            <li><a href="../poliKlinik/index.html">Poli Klinik<i class="fa-solid fa-house-medical"></i></a></li>
-                            <li><a href="./index.html">Dokter<i class="fa-solid fa-user-doctor"></i></a></li>
+                            <li><a href="../pasien/index.php">Pasien<i class="fa-solid fa-bed"></i></a></li>
+                            <li><a href="../poliKlinik/index.php">Poli Klinik<i class="fa-solid fa-house-medical"></i></a></li>
+                            <li><a href="./index.php">Dokter<i class="fa-solid fa-user-doctor"></i></a></li>
                         </ul>
                     </li>
                     <li class="Btn-transaksi btn-list">
                         <span>Pendaftaran</span>
                         <ul class="transaksi navList">
-                            <li><a href="../transaksi/index.html">Pendaftaran<i class="fa-solid fa-clipboard-list"></i></a></li>
+                            <li><a href="../transaksi/index.php">Pendaftaran<i class="fa-solid fa-clipboard-list"></i></a></li>
                         </ul>
                     </li>
                     <li class="Btn-laporan btn-list">
                         <span>Laporan</span>
                         <ul class="laporan navList">
-                            <li><a href="../transaksi/index.html#pasien">Laporan Pasien<i class="fa-solid fa-file-lines"></i></a></li>
-                            <li><a href="../transaksi/index.html#pengunjung">Laporan Kunjungan<i class="fa-solid fa-id-card-clip"></i></a></li>
+                            <li><a href="../transaksi/index.php#pasien">Laporan Pasien<i class="fa-solid fa-file-lines"></i></a></li>
+                            <li><a href="../transaksi/index.php#pengunjung">Laporan Kunjungan<i class="fa-solid fa-id-card-clip"></i></a></li>
                         </ul>
                     </li>
                     <li class="Btn-pengaturan btn-list">
                         <span>Beranda</span>
                         <ul class="pengaturan navList">
-                            <li><a href="../home/home.html">Profil Rumah Sakit<i class="fa-solid fa-hospital"></i></a></li>
+                            <li><a href="../home/home.php">Profil Rumah Sakit<i class="fa-solid fa-hospital"></i></a></li>
                         </ul>
                     </li>
                 </ul>
@@ -70,8 +82,8 @@
                     <i class="fa-solid fa-user-doctor"></i>
                 </div>
                 <div class="ket-jmlh-dokter">
-                    <h3>Jumlah Dokter :</h3>
-                    <h4>Jumlah Semua Dokter :  35</h4>
+                    <h3>Jumlah Data Dokter :</h3>
+                    <h4>Jumlah Semua Data Dokter :  35</h4>
                     <p>Rumah sakit memiliki 35 dokter yang terdiri dari dokter umum dan dokter spesialis yang siap memberikan pelayanan kesehatan kepada pasien. Jumlah ini menunjukkan kapasitas tenaga medis yang tersedia untuk mendukung pelayanan rawat jalan, rawat inap, maupun tindakan medis lainnya.</p>
                     <div class="icons">
                         <i class="fa-solid fa-briefcase-medical"></i>
@@ -80,8 +92,8 @@
                         <i class="fa-solid fa-stethoscope"></i>
                     </div>
                     <div class="btn-jmlh-dokter">
-                        <button><a href="">Data Dokter</a></button>
-                        <button><a href="">Liat Jadwal Dokter</a></button>
+                        <button><a href="#profile-dokter">Data Dokter</a></button>
+                        <button><a href="#kelola-jadwal-dokter">Liat Jadwal Dokter</a></button>
 
                     </div>
                 </div>
@@ -177,82 +189,60 @@
                     </form>
                 </div>
                 <div class="btn-interaktif">
-                    <button><a href="formTambahDokter.html">+Tambah</a></button>
+                    <button><a href="formTambahDokter.php">+Tambah</a></button>
                     <button><a href=""><i class="fa-solid fa-filter"></i>Filter</a></button>
                 </div>
             </div>
-            <div class="profile-dokter">
+            <div class="profile-dokter" id="profile-dokter" >
+                <?php foreach($dataDokter as $data) :?>
                 <div class="card-profile">
                     <div class="foto">
                         <img src="img/gambar-dokter.jpg" alt="">
                     </div>
                     <div class="data-singkat">
-                        <h2>Dr.nanda</h2>
-                        <span>Laki-laki</span>
-                        <h3>18th</h3>
-                        <h5>ID : 9928038083</h5>
-                        <h5>poli Klinik</h5>
-                        <h4>Dokter Gigi</h4>
+                        <h2>Dr.<?= $data['nama_panggilan_dokter'] ?></h2>
+                        <span><?= $data['gender'] ?></span>
+                        <h3><?php 
+                        $tanggalLahir = $data['tanggal_lahir']; 
+                        $tanggal = date_create($tanggalLahir);
+                        $tanggalsekarang = date_create('Today');
+                        $umur = date_diff($tanggal , $tanggalsekarang);
+                        echo $umur->y;
+                        ?>th</h3>
+                        <h5>ID : <?= $data['nomor_dokter'] ?></h5>
+                        <h5><?= $data['poli']?></h5>
+                        <h4><?= $data['spesialis'] ?></h4>
                         <div class="btn-data">
                             <button class="selengkapnya"><a href="">Selengkapnya</a></button>
-                            <button class="edit"><a href=""><i class="fa-regular fa-pen-to-square"></i></a></button>
-                            <button class="hapus"><a href=""><i class="fa-regular fa-trash-can"></i></a></button>
+                            <button class="edit"><a href="formEditDokter.php?id=<?= $data['id_dokter'] ?>"><i class="fa-regular fa-pen-to-square"></i></a></button>
+                        <form action="" method="post">
+                            <button type="submit" name="hapus" value="<?= $data['id_dokter']; ?>" class="hapus"><i class="fa-regular fa-trash-can"></i></button>
+                        </form>
                         </div>
                     </div>
                 </div>
-                <div class="card-profile">
-                    <div class="foto">
-                        <img src="img/gambar-dokter.jpg" alt="">
-                    </div>
-                    <div class="data-singkat">
-                        <h2>Dr.nanda</h2>
-                        <span>Laki-laki</span>
-                        <h3>18th</h3>
-                        <h5>ID : 9928038083</h5>
-                        <h5>poli Klinik</h5>
-                        <h4>Dokter Gigi</h4>
-                        <div class="btn-data">
-                            <button class="selengkapnya"><a href="">Selengkapnya</a></button>
-                            <button class="edit"><a href=""><i class="fa-regular fa-pen-to-square"></i></a></button>
-                            <button class="hapus"><a href=""><i class="fa-regular fa-trash-can"></i></a></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-profile">
-                    <div class="foto">
-                        <img src="img/gambar-dokter.jpg" alt="">
-                    </div>
-                    <div class="data-singkat">
-                        <h2>Dr.nanda</h2>
-                        <span>Laki-laki</span>
-                        <h3>18th</h3>
-                        <h5>ID : 9928038083</h5>
-                        <h5>poli Klinik</h5>
-                        <h4>Dokter Gigi</h4>
-                        <div class="btn-data">
-                            <button class="selengkapnya"><a href="">Selengkapnya</a></button>
-                            <button class="edit"><a href=""><i class="fa-regular fa-pen-to-square"></i></a></button>
-                            <button class="hapus"><a href=""><i class="fa-regular fa-trash-can"></i></a></button>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
-        <div class="kelola-jadwal-dokter">
+        <div class="kelola-jadwal-dokter" id="kelola-jadwal-dokter">
             <div class="jadwal-container tabel-kelola-jadwal">
                 <div class="header">
                     <h3>Kelola Jadwal Dokter</h3>
                 </div>
                 <div class="tabel-data">
+                    <?php $i = 0; ?>
+                    <?php foreach($dataDokter as $data) : ?>
                     <div class="list-data-dokter">
-                        <h5>1</h5>
+                        <h5><?= $i + 1 ?></h5>
                         <img src="img/gambar-dokter.jpg" alt="">
-                        <h3>nama dokter</h3>
-                        <h4>ID_100190103</h4>
-                        <span>Ruangan 01</span>
-                        <span>07:00 - 09:00</span>
-                        <button><a href=""><i class="fa-solid fa-clock-rotate-left"></i>Atur Jadwal</a></button>
+                        <h3>Dokter <?= $data['nama_panggilan_dokter'] ?></h3>
+                        <h4>ID_<?= $data['nomor_dokter'] ?></h4>
+                        <span>Ruangan <?= $data['ruangan_praktik'] ?></span>
+                        <span><?= $data['jam_mulai_praktik'] ?> - <?= $data['jam_selesai_praktik'] ?></span>
+                        <button><a href="kelolaJadwalDokter.php?id=<?= $data['id_dokter'] ?>"><i class="fa-solid fa-clock-rotate-left"></i>Atur Jadwal</a></button>
                     </div>
+                    <?php $i++; ?>
+                    <?php endforeach; ?>
                 </div>
             </div>
             <div class="jadwal-container data-dokter-aktif">
