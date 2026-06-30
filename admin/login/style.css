@@ -1,0 +1,202 @@
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
+ 
+  :root{
+    --bg: #eaf4fb;
+    --card: #ffffff;
+    --card-border: #dbeaf5;
+    --accent: #4fb6e8;
+    --accent-deep: #0f3a52;
+    --accent-soft: rgba(79, 182, 232, 0.16);
+    --text: #1c2b38;
+    --muted: #7c8a98;
+    --danger: #e25555;
+  }
+ 
+  *{ box-sizing: border-box; }
+ 
+  body{
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at 20% 0%, #ffffff 0%, var(--bg) 60%);
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    padding: 24px;
+  }
+ 
+  .login-card{
+    width: 100%;
+    max-width: 380px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 18px;
+    padding: 38px 34px 32px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 30px 60px -25px rgba(79, 182, 232, 0.35);
+  }
+ 
+  .login-card::before{
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    background-size: 200% 100%;
+    animation: sweep 4.5s ease-in-out infinite;
+  }
+ 
+  @keyframes sweep{
+    0%{ background-position: 0% 0%; }
+    50%{ background-position: 100% 0%; }
+    100%{ background-position: 0% 0%; }
+  }
+ 
+  .eyebrow{
+    margin: 0 0 8px;
+    font-size: 11.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    font-weight: 600;
+  }
+ 
+  .title{
+    margin: 0 0 28px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+ 
+  .field{
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+ 
+  .field label{
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+  }
+ 
+  .field input[type="text"],
+  .field input[type="password"]{
+    background: #f5fafd;
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 14.5px;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color .18s ease, box-shadow .18s ease;
+  }
+ 
+  .field input::placeholder{
+    color: #a7b6c4;
+  }
+ 
+  .field input:focus{
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+ 
+  .field--row{
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 4px 0 26px;
+  }
+ 
+  .remember{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+  }
+ 
+  .remember input{
+    position: absolute;
+    opacity: 0;
+    width: 19px;
+    height: 19px;
+    margin: 0;
+    cursor: pointer;
+  }
+ 
+  .checkbox-box{
+    width: 19px;
+    height: 19px;
+    border-radius: 6px;
+    border: 1.5px solid var(--card-border);
+    background: #f5fafd;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: border-color .15s ease, background .15s ease;
+  }
+ 
+  .checkbox-box svg{
+    width: 12px;
+    height: 12px;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity .15s ease, transform .15s ease;
+  }
+ 
+  .remember input:checked + .checkbox-box{
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+ 
+  .remember input:checked + .checkbox-box svg{
+    opacity: 1;
+    transform: scale(1);
+  }
+ 
+  .remember input:focus-visible + .checkbox-box{
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+ 
+  .remember span.label-text{
+    font-size: 13.5px;
+    color: var(--muted);
+  }
+ 
+  .btn-submit{
+    width: 100%;
+    padding: 13px 0;
+    border: none;
+    border-radius: 10px;
+    background: var(--accent);
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-size: 14.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform .12s ease, filter .12s ease;
+  }
+ 
+  .btn-submit:hover{
+    filter: brightness(1.06);
+  }
+ 
+  .btn-submit:active{
+    transform: scale(0.98);
+  }
+ 
+  .btn-submit:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+ 
+  @media (max-width: 380px){
+    .login-card{ padding: 30px 22px 26px; }
+  }
