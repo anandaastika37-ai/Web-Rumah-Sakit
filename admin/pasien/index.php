@@ -2,7 +2,15 @@
 
 include '../funtion/funtion.php';
 
-$dataPasien = query('SELECT * FROM pasien');
+$dataPasien = query("SELECT
+        p.*,
+        rm.diagnosa_dokter,
+        rm.dokter_menangani,
+        rm.tanggal_diperiksa
+    FROM pasien p
+    LEFT JOIN `riwayat_medis_pasien` rm
+        ON p.id_pasien = rm.id_pasien
+");
 if(isset($_POST['hapus'])){
     if(hapusDataPasien($_POST['hapus'])){
          echo "<script>
@@ -11,6 +19,32 @@ if(isset($_POST['hapus'])){
         </script>";
     }
 }
+
+if(isset($_POST['find'])){
+    $dataPasien = searchPasien($_POST['search']);
+}
+
+$jumlahPasien = query("SELECT * FROM pasien");
+$lakilaki = query("SELECT * FROM pasien WHERE gender = 'Laki-laki'");
+$perempuan = query("SELECT * FROM pasien WHERE gender = 'Perempuan'");
+
+$golonganDarah = ['O' , 'A' , 'B' , 'AB' , 'tidak diketahui'];
+
+$O = query("SELECT * FROM pasien WHERE golongan_darah = '$golonganDarah[0]'");
+$A = query("SELECT * FROM pasien WHERE golongan_darah = '$golonganDarah[1]'");
+$B = query("SELECT * FROM pasien WHERE golongan_darah = '$golonganDarah[2]'");
+$AB = query("SELECT * FROM pasien WHERE golongan_darah = '$golonganDarah[3]'");
+$tidakTahu = query("SELECT * FROM pasien WHERE golongan_darah = '$golonganDarah[4]'");
+
+$pekerjaan = ['PNS' , 'Wirausaha' , 'Kariawan Swasta' , 'Mahasiswa' , 'Pelajar' , 'Lainnya'];
+
+$pns = query("SELECT * FROM pasien WHERE pekerjaan = '$pekerjaan[0]'");
+$wirausaha = query("SELECT * FROM pasien WHERE pekerjaan = '$pekerjaan[1]'");
+$karyawan = query("SELECT * FROM pasien WHERE pekerjaan = '$pekerjaan[2]'");
+$mahasiswa = query("SELECT * FROM pasien WHERE pekerjaan = '$pekerjaan[3]'");
+$pelajar = query("SELECT * FROM pasien WHERE pekerjaan = '$pekerjaan[4]'");
+$lainnya = query("SELECT * FROM pasien WHERE pekerjaan = '$pekerjaan[5]'");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,8 +85,8 @@ if(isset($_POST['hapus'])){
                     <li class="Btn-laporan btn-list">
                         <span>Laporan</span>
                         <ul class="laporan navList">
-                            <li><a href="../transaksi/index.php#pasien">Laporan Pasien<i class="fa-solid fa-file-lines"></i></a></li>
-                            <li><a href="../transaksi/index.php#pengunjung">Laporan Kunjungan<i class="fa-solid fa-id-card-clip"></i></a></li>
+                            <li><a href="../laporan/index.php#pasien">Laporan Pasien<i class="fa-solid fa-file-lines"></i></a></li>
+                            <li><a href="../laporan/index.php#pengunjung">Laporan Kunjungan<i class="fa-solid fa-id-card-clip"></i></a></li>
                         </ul>
                     </li>
                     <li class="Btn-pengaturan btn-list">
@@ -81,7 +115,7 @@ if(isset($_POST['hapus'])){
             <div class="data-container analisa-1">
                 <div class="deskripsi">
                     <h3>Jumlah Data Pasien Saat Ini</h3>
-                    <span>1.000 Pasien</span>
+                    <span><?php if(mysqli_num_rows($jumlahPasien) > 0){ echo mysqli_num_rows($jumlahPasien); } else { echo '0'; }?> Pasien</span>
                     <p>Informasi jumlah pasien memberikan gambaran mengenai total pasien yang terdaftar dan aktif dalam sistem. Data ini membantu pihak rumah sakit dalam menganalisis tingkat kunjungan, merencanakan kebutuhan sumber daya medis, serta meningkatkan kualitas pelayanan kesehatan.</p>
                 </div>
             </div>
@@ -94,10 +128,14 @@ if(isset($_POST['hapus'])){
                 <h3>Pasien Sesuai Jenis Kelamin</h3>
                 <ul>
                     <li>Laki-laki :
-                        <span>20</span>
+                        <span>
+                            <?php if(mysqli_num_rows($lakilaki) > 0){ echo mysqli_num_rows($lakilaki); } else { echo '0'; }?>
+                        </span>
                     </li>
                     <li>Perempuan :
-                        <span>20</span>
+                        <span>
+                            <?php if(mysqli_num_rows($perempuan) > 0){ echo mysqli_num_rows($perempuan); } else { echo '0'; }?>
+                        </span>
                     </li>
                 </ul>
             </div>
@@ -108,19 +146,29 @@ if(isset($_POST['hapus'])){
                 <h3>Pasien Sesuai Gologan Darah</h3>
                 <ul>
                     <li>Golongan Darah A :
-                        <span>20</span>
+                        <span>
+                            <?php if(mysqli_num_rows($A) > 0){ echo mysqli_num_rows($A); } else { echo '0'; }?>
+                        </span>
                     </li>
                     <li>Golongan Darah B :
-                        <span>20</span>
+                        <span>
+                            <?php if(mysqli_num_rows($B) > 0){ echo mysqli_num_rows($B); } else { echo '0'; }?>
+                        </span>
                     </li>
                     <li>Golongan Darah AB :
-                        <span>20</span>
+                        <span>
+                            <?php if(mysqli_num_rows($AB) > 0){ echo mysqli_num_rows($AB); } else { echo '0'; }?>
+                        </span>
                     </li>
                     <li>Golongan Darah O :
-                        <span>20</span>
+                        <span>
+                            <?php if(mysqli_num_rows($O) > 0){ echo mysqli_num_rows($O); } else { echo '0'; }?>
+                        </span>
                     </li>
                     <li>Tidak Diketahui :
-                        <span>20</span>
+                        <span>
+                            <?php if(mysqli_num_rows($tidakTahu) > 0){ echo mysqli_num_rows($tidakTahu); } else { echo '0'; }?>
+                        </span>
                     </li>
                 </ul>
             </div>
@@ -128,22 +176,34 @@ if(isset($_POST['hapus'])){
                 <h3>Pasien Sesuai Pekerjaan</h3>
                 <ul>
                     <li>PNS :
-                        <span>20</span>
+                        <span>
+                            <?php if(mysqli_num_rows($pns) > 0){ echo mysqli_num_rows($pns); } else { echo '0'; }?>
+                        </span>
                     </li>
-                    <li>Wiraswasta :
-                        <span>20</span>
+                    <li>Wirausaha :
+                        <span>
+                            <?php if(mysqli_num_rows($wirausaha) > 0){ echo mysqli_num_rows($wirausaha); } else { echo '0'; }?>
+                        </span>
                     </li>
                     <li>Kariawan Swasta :
-                        <span>20</span>
+                        <span>
+                            <?php if(mysqli_num_rows($karyawan) > 0){ echo mysqli_num_rows($karyawan); } else { echo '0'; }?>
+                        </span>
                     </li>
                     <li>Mahasiswa :
-                        <span>20</span>
+                        <span>
+                            <?php if(mysqli_num_rows($mahasiswa) > 0){ echo mysqli_num_rows($mahasiswa); } else { echo '0'; }?>
+                        </span>
                     </li>
                     <li>Pelajar :
-                        <span>20</span>
+                        <span>
+                            <?php if(mysqli_num_rows($pelajar) > 0){ echo mysqli_num_rows($pelajar); } else { echo '0'; }?>
+                        </span>
                     </li>
                     <li>Lainnya :
-                        <span>20</span>
+                        <span>
+                            <?php if(mysqli_num_rows($lainnya) > 0){ echo mysqli_num_rows($lainnya); } else { echo '0'; }?>
+                        </span>
                     </li>
                 </ul>
             </div>
@@ -154,14 +214,13 @@ if(isset($_POST['hapus'])){
         <div class="data-pasien-container">
             <div class="btn-crud">
                 <div class="search">
-                    <form action="">
+                    <form action="" method="post">
                         <input type="text" id="search" name="search" placeholder="search">
                         <button type="submit" name="find">Search</button>
                     </form>
                 </div>
                 <div class="create">
                     <button><a href="tambah.php">+Tambah</a></button>
-                    <button><a href=""><i class="fa-solid fa-filter"></i>Filter</a></button>
                 </div>
             </div>
             <div class="container-data">
@@ -185,7 +244,7 @@ if(isset($_POST['hapus'])){
                             <li><?= $data['pekerjaan'] ?></li>
                         </ul>
                         <div class="btn-profil">
-                            <button><a href="">Selengkapnya</a></button>
+                            <button><a href="detailData.php?id=<?= $data['id_pasien'] ?>">Selengkapnya</a></button>
                             <button><a href="editDataPasien.php?id=<?= $data['id_pasien'] ?>"><i class="fa-regular fa-pen-to-square"></i></a></button>
                             <form action="" method="post">
                                 <button name="hapus" type="submit" value="<?= $data['id_pasien'] ?>"><a href=""><i class="fa-regular fa-trash-can"></i></a></button>
@@ -199,21 +258,26 @@ if(isset($_POST['hapus'])){
         <div class="rekam-medis-container">
             <h2>Kelola Rekam Medis Pasien</h2>
             <div class="tabel-data-container">
+                <?php $i = 0;?>
+                <?php foreach($dataPasien as $data) :?>
                 <div class="list-data-pasien">
                     <ul>
-                        <li>1</li>
-                        <li>Tono</li>
-                        <li>79793729</li>
-                        <li>Migran</li>
-                        <li>dr.someone</li>
-                        <li>14-16-2026</li>
+                        <li><?= $i + 1?></li>
+                        <li><?= $data['nama_panggilan_pasien'] ?></li>
+                        <li><?= $data['nomor_id_pasien'] ?></li>
+                        <li><?= !empty($data['diagnosa_dokter'])? $data['diagnosa_dokter']: 'Belum Ada Rekam Medis'?></li>
+                        <li><?= !empty($data['dokter_menangani'])? 'dr. '.$data['dokter_menangani']: 'Belum Ditangani' ?></li>
+                        <li><?= !empty($data['tanggal_diperiksa'])? $data['tanggal_diperiksa']: 'Available'?></li>
                         <li>
-                            <button><a href="tambahRM.php">Tambah</a></button>
-                            <button><a href="">Lihat</a></button>
-                            <button><a href="">Edit</a></button>
+                            <button><a href="tambahRM.php?id=<?= $data['id_pasien'] ?>">Tambah</a></button>
+                            <button <?= empty($data['diagnosa_dokter'])? 'hidden' : '' ?> ><a href="detailRM.php?id=<?= $data['id_pasien'] ?>">Lihat</a></button>
+                            <button <?= empty($data['diagnosa_dokter'])? 'hidden' : '' ?> ><a href="editRM.php?id=<?= $data['id_pasien'] ?>">Edit</a></button>
+
                         </li>
                     </ul>
                 </div>
+                <?php $i++;?>
+                <?php endforeach; ?>
             </div>
         </div>
      </div>

@@ -1,3 +1,22 @@
+<?php
+include '../funtion/funtion.php';
+
+$datapasien = query("SELECT *
+FROM pasien
+WHERE status_kunjungan = 'Rawat Jalan'
+AND poli_pasien IS NOT NULL
+AND ruangan_pasien IS NOT NULL
+");
+
+$belumTerdaftar = query("SELECT *
+FROM pasien
+WHERE status_kunjungan = 'Rawat Jalan'
+AND (poli_pasien IS NULL OR poli_pasien = '')
+AND (ruangan_pasien IS NULL OR ruangan_pasien = '')
+");
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,14 +86,16 @@
             <div class="anterian-container container">
                 <h3>Antrian Pasien</h3>
                 <div class="antrian-tabel">
+                    <?php $i = 1 ?>
+                    <?php foreach($datapasien as $data) :?>
                     <div class="list-data-antrian">
                         <ul>
-                            <li>1</li>
-                            <li>nama</li>
-                            <li>29019032</li>
-                            <li>alamat</li>
-                            <li>[R.30]</li>
-                            <li>Poli Umum</li>
+                            <li><?= $i ?></li>
+                            <li><?= $data['nama_panggilan_pasien'] ?></li>
+                            <li><?= $data['nomor_id_pasien'] ?></li>
+                            <li><?= $data['alamat'] ?></li>
+                            <li>[R.<?= $data['ruangan_pasien'] ?>]</li>
+                            <li><?= $data['poli_pasien'] ?></li>
                             <li>
                                 <button><a href="">Hapus</a></button>
                                 <button><a href="">Edit</a></button>
@@ -82,24 +103,35 @@
                             </li>
                         </ul>
                     </div>
+                    <?php $i++ ?>
+                    <?php endforeach;?>
                 </div>
             </div>
             <div class="pendaftaran-container container">
                 <h3>Pendaftaran Pasien</h3>
                 <div class="pendaftaran-tabel">
+                    <?php $i = 1 ?>
+                    <?php foreach($belumTerdaftar as $data) :?>
                     <div class="list-data-pendaftran">
                         <ul>
-                            <li>1</li>
-                            <li>nama</li>
-                            <li>18</li>
-                            <li>laki-laki</li>
-                            <li>alamat</li>
-                            <li><button><a href="tambahKeAntrian.php">Masukan</a></button>
+                            <li><?= $i ?></li>
+                            <li><?= $data['nama_panggilan_pasien'] ?></li>
+                            <li><?php $tanggalLahir = $data['tanggal_lahir_pasien'];
+                                $tanggal = date_create($tanggalLahir);
+                                $tanggalSekarang = date_create('Today');
+                                $umur = date_diff($tanggal , $tanggalSekarang);
+                                echo $umur->y;
+                            ?> th</li>
+                            <li><?= $data['gender'] ?></li>
+                            <li><?= $data['alamat'] ?></li>
+                            <li><button><a href="tambahKeAntrian.php?id=<?= $data['id_pasien'] ?>">Masukan</a></button>
                                 <button><a href="">Tolak</a></button>
-                                <button><a href="">Lihat Data</a></button>
+                                <button><a href="detailData.php?id=<?=  $data['id_pasien']?>">Lihat Data</a></button>
                             </li>
                         </ul>
                     </div>
+                    <?php $i++ ?>
+                    <?php endforeach;?>
                 </div>
             </div>
         </div>

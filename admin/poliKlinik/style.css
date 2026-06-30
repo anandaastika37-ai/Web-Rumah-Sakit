@@ -374,6 +374,8 @@ body{
     gap: 10px;
     padding: 20px;
     flex-direction: column;
+    overflow: scroll;
+    overflow-x: hidden;
 }
 
 .list-data{

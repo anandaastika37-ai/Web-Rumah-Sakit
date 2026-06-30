@@ -44,7 +44,15 @@ $value = mysqli_fetch_assoc($data);
                     </div>
                     <div class="input">
                         <label for="pekerjaan">Pekerjaan</label>
-                        <input type="text" id="pekerjaan" name="pekerjaan" value="<?= $value['pekerjaan'] ?>">
+                        <label for="pekerjaan">Pekerjaan</label>
+                        <select id="pekerjaan" name="pekerjaan" value="<?= $value['pekerjaan'] ?>">
+                            <option value="PNS">PNS</option>
+                            <option value="Wirausaha">Wirausaha</option>
+                            <option value="Kariawan Swasta">Kariawan Swasta</option>
+                            <option value="Mahasiswa">Mahasiswa</option>
+                            <option value="Pelajar">Pelajar</option>
+                            <option value="Lainnya">Lainnya</option>
+                        </select>
                     </div>
                     <div class="input">
                         <label for="golonganDarah">Golongan Darah</label>
@@ -77,9 +85,9 @@ $value = mysqli_fetch_assoc($data);
                     </div>
                     <div class="input-gender">
                         <label for="lakiLaki">Laki - laki</label>
-                        <input type="radio" id="lakiLaki" name="gender">
+                        <input type="radio" id="lakiLaki" name="gender" value="Laki-laki" <?= $value['gender'] == 'Laki-laki' ? 'checked' : '' ?>>
                         <label for="perempuan">Perempuan</label>
-                        <input type="radio" id="perempuan" name="gender">
+                        <input type="radio" id="perempuan" name="gender" value="Perempuan" <?= $value['gender'] == 'Perempuan' ? 'checked' : '' ?>>
                     </div>
                     <div class="input">
                         <label for="agama">Agama</label>

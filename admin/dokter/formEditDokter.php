@@ -83,19 +83,19 @@ $value = mysqli_fetch_assoc($data);
                     </div>
                     <div class="input-gender">
                         <label for="lakiLaki">Laki - laki</label>
-                        <input type="radio" id="akiLaki" name="gender" value="Laki-laki" <?= $value['gender'] == 'Laki-laki' ? 'checked' : '' ?> >
+                        <input type="radio" id="lakiLaki" name="gender" value="Laki-laki" <?= $value['gender'] == 'Laki-laki' ? 'checked' : '' ?> >
                         <label for="perempuan">Perempuan</label>
                         <input type="radio" id="perempuan" name="gender" value="Perempuan"  <?= $value['gender'] == 'Perempuan' ? 'checked' : '' ?>>
                     </div>
                     <div class="input">
                         <label for="spesialis">Spesialis</label>
                         <select name="spesialis" id="spesialis" alue="<?= $value['spesialis'] ?> ">
-                            <option value="Dokter Umum">Dokter Umum</option>
-                            <option value="Dokter Bedah">Dokter Bedah</option>
-                            <option value="Dokter Mata">Dokter Mata</option>
-                            <option value="Dokter Anak">Dokter Anak</option>
-                            <option value="Dokter THT">Dokter THT</option>
-                            <option value="Dokter Saraf">Dokter Saraf</option>
+                            <option value="Umum">Dokter Umum</option>
+                            <option value="Bedah">Dokter Bedah</option>
+                            <option value="Mata">Dokter Mata</option>
+                            <option value="Anak">Dokter Anak</option>
+                            <option value="THT">Dokter THT</option>
+                            <option value="Saraf">Dokter Saraf</option>
                         </select>
                     </div>
                     <div class="input">

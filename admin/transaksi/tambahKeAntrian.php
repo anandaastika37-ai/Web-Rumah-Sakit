@@ -1,3 +1,10 @@
+<?php
+
+include '../funtion/funtion.php';
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,12 +15,19 @@
 </head>
 <body>
     <div class="form-container">
-        <form action="">
+        <form action="" method="post">
             <div class="input-container">
                 <h2>Kelola Antrian Pasien</h2>
                 <div class="input">
-                    <label for="hariPraktik">Poli Klinik</label>
-                    <input type="text" id="hariPraktik">
+                    <label for="poliKlinik">Poli Klinik</label>
+                    <select name="poli" id="poliKilinik">
+                            <option value="Poli Umum">Poli Umum</option>
+                            <option value="Poli Mata">Poli Mata</option>
+                            <option value="Poli Anak">Poli Anak</option>
+                            <option value="Poli THT">Poli THT</option>
+                            <option value="Poli Saraf">Poli Saraf</option>
+                            <option value="Poli Bedah">Poli Bedah</option>
+                    </select>
                 </div>
                 <div class="input">
                     <label for="hariPraktik">Ruangan</label>
@@ -30,22 +44,6 @@
                 <div class="input">
                     <label for="hariPraktik">Hari</label>
                     <input type="text" id="hariPraktik">
-                </div>
-                <div class="input">
-                    <label for="hariPraktik">Jam Mulai</label>
-                    <input type="time">
-                </div>
-                <div class="input">
-                    <label for="hariPraktik">Jam Selesai</label>
-                    <input type="time">
-                </div>
-                <div class="input">
-                        <label for="ket-waktu">keterangan Waktu</label>
-                        <select name="" id="ket-waktu">
-                            <option value="">Pagi</option>
-                            <option value="">Siang</option>
-                            <option value="">Malam</option>
-                        </select>
                 </div>      
                 <div class="btn-form">
                     <button><a href="index.php">Cancel</a></button>

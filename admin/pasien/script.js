@@ -9,17 +9,8 @@ const BtnBackSecond = document.getElementById('backSecond');
 const BtnNextSecond = document.getElementById('nextSecond');
 const BtnBackThird = document.getElementById('backThird');
 const BtnBackThirdRM = document.getElementById('backThirdRM');
-const selectBPJS = document.getElementById('metodePembayaran');
-const hidden = document.querySelector('.hidden');
 
 
-selectBPJS.addEventListener('change' , function(){
-    if(selectBPJS.value == 'BPJS'){
-        hidden.classList.replace('hidden' , 'show');
-    }else{
-        hidden.classList.replace('show' , 'hidden')
-    }
-})
 
 if (BtnNextFirst) {
     BtnNextFirst.addEventListener('click', function () {
@@ -49,16 +40,15 @@ if (BtnBackThird) {
     });
 }
 
-if (BtnNextFirstRM) {
+
     BtnNextFirstRM.addEventListener('click', function () {
         firstFormRM.style.display = 'none';
         secondFormRM.style.display = 'flex';
     });
-}
 
-if (BtnBackThirdRM) {
+
+
     BtnBackThirdRM.addEventListener('click', function () {
         secondFormRM.style.display = 'none';
         firstFormRM.style.display = 'flex';
     });
-}

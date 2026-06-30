@@ -5,6 +5,11 @@ include '../funtion/funtion.php';
 if(isset($_POST['submit'])){
     if(tambahPasien($_POST) > 0 ){
         header("Location:index.php");
+    }else{
+        header("Location:index.php");
+        echo "<script>
+        alert('Data Yang Input Kosong , gagal Ditambah');
+        </script>";
     }
 }
 
@@ -48,7 +53,14 @@ if(isset($_POST['submit'])){
                     </div>
                     <div class="input">
                         <label for="pekerjaan">Pekerjaan</label>
-                        <input type="text" id="pekerjaan" name="pekerjaan">
+                        <select id="pekerjaan" name="pekerjaan">
+                            <option value="PNS">PNS</option>
+                            <option value="Wirausaha">Wirausaha</option>
+                            <option value="Kariawan Swasta">Kariawan Swasta</option>
+                            <option value="Mahasiswa">Mahasiswa</option>
+                            <option value="Pelajar">Pelajar</option>
+                            <option value="Lainnya">Lainnya</option>
+                        </select>
                     </div>
                     <div class="input">
                         <label for="golonganDarah">Golongan Darah</label>
@@ -57,6 +69,7 @@ if(isset($_POST['submit'])){
                             <option value="B">B</option>
                             <option value="AB">AB</option>
                             <option value="O">O</option>
+                            <option value="tidak diketahui">tidak diketahui</option>
                         </select>
                     </div>
                     <div class="input">
@@ -81,9 +94,9 @@ if(isset($_POST['submit'])){
                     </div>
                     <div class="input-gender">
                         <label for="lakiLaki">Laki - laki</label>
-                        <input type="radio" id="lakiLaki" name="gender">
+                        <input type="radio" id="lakiLaki" name="gender" value="Laki-laki">
                         <label for="perempuan">Perempuan</label>
-                        <input type="radio" id="perempuan" name="gender">
+                        <input type="radio" id="perempuan" name="gender" value="Perempuan">
                     </div>
                     <div class="input">
                         <label for="agama">Agama</label>
@@ -99,8 +112,8 @@ if(isset($_POST['submit'])){
                     <div class="input">
                         <label for="statusPernikahan">Status Pernikahan</label>
                         <select name="statusPernikahan" id="statusPernikahan">
-                            <option value="">Sudah Kawin</option>
-                            <option value="">Belum kawin</option>
+                            <option value="Sudah Kawin">Sudah Kawin</option>
+                            <option value="Belum kawin">Belum kawin</option>
                         </select>
                     </div>
                 </div>

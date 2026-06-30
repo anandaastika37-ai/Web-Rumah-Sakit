@@ -1,3 +1,15 @@
+<?php
+
+include '../funtion/funtion.php';
+$dataDokter = query("SELECT * FROM dokter");
+$dokterPoliAnak = query("SELECT * FROM dokter WHERE poli = 'Poli Anak'");
+$dokterPoliBedah = query("SELECT * FROM dokter WHERE poli = 'Poli Bedah'");
+$dokterPoliSaraf = query("SELECT * FROM dokter WHERE poli = 'Poli Saraf'");
+$dokterPoliTHT = query("SELECT * FROM dokter WHERE poli = 'Poli THT'");
+$dokterPoliUmum = query("SELECT * FROM dokter WHERE poli = 'Poli Umum'");
+$dokterPoliMata = query("SELECT * FROM dokter WHERE poli = 'Poli Mata'");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,8 +50,8 @@
                     <li class="Btn-laporan btn-list">
                         <span>Laporan</span>
                         <ul class="laporan navList">
-                            <li><a href="../transaksi/index.php#pasien">Laporan Pasien<i class="fa-solid fa-file-lines"></i></a></li>
-                            <li><a href="../transaksi/index.php#pengunjung">Laporan Kunjungan<i class="fa-solid fa-id-card-clip"></i></a></li>
+                            <li><a href="../laporan/index.php#pasien">Laporan Pasien<i class="fa-solid fa-file-lines"></i></a></li>
+                            <li><a href="../laporan/index.php#pengunjung">Laporan Kunjungan<i class="fa-solid fa-id-card-clip"></i></a></li>
                         </ul>
                     </li>
                     <li class="Btn-pengaturan btn-list">
@@ -104,26 +116,33 @@
                 </div>
                     <div class="data">
                     <h3>Dokter</h3>
-                    <h4>10</h4>
+                    <h4><?php if(mysqli_num_rows($dataDokter) > 0){ echo mysqli_num_rows($dataDokter); } else {echo '0';} ?></h4>
                     <div class="container-jenis">
                         <div class="jenis-jenis-dokter">
                             <h5>Dokter Umum</h5>
-                            <h4>30</h4>
+                            <h4><?php if(mysqli_num_rows($dokterPoliUmum) > 0){ echo mysqli_num_rows($dokterPoliUmum); } else {echo '0';} ?></h4>
                         </div>
                         <div class="jenis-jenis-dokter">
-                            <h5>Dokter Gigi</h5>
-                            <h4>40</h4>
+                            <h5>Dokter Saraf</h5>
+                            <h4><?php if(mysqli_num_rows($dokterPoliSaraf) > 0){ echo mysqli_num_rows($dokterPoliSaraf); } else {echo '0';} ?></h4>
                         </div>
                         <div class="jenis-jenis-dokter">
                             <h5>Dokter Anak</h5>
-                            <h4>20</h4>
+                            <h4><?php if(mysqli_num_rows($dokterPoliAnak) > 0){ echo mysqli_num_rows($dokterPoliAnak); } else {echo '0';} ?></h4>
                         </div>
                         <div class="jenis-jenis-dokter">
                             <h5>Dokter Mata</h5>
-                            <h4>10</h4>
+                            <h4><?php if(mysqli_num_rows($dokterPoliMata) > 0){ echo mysqli_num_rows($dokterPoliMata); } else {echo '0';} ?></h4>
+                        </div>
+                        <div class="jenis-jenis-dokter">
+                            <h5>Dokter Bedah</h5>
+                            <h4><?php if(mysqli_num_rows($dokterPoliBedah) > 0){ echo mysqli_num_rows($dokterPoliBedah); } else {echo '0';} ?></h4>
+                        </div>
+                        <div class="jenis-jenis-dokter">
+                            <h5>Dokter THT</h5>
+                            <h4><?php if(mysqli_num_rows($dokterPoliTHT) > 0){ echo mysqli_num_rows($dokterPoliTHT); } else {echo '0';} ?></h4>
                         </div>
                     </div>
-                    <button><a href="">Selengkapnya >></a></button>
                 </div>
             </div>
             <div class="box-info perawat">
@@ -132,18 +151,17 @@
                 </div>
                 <div class="data">
                     <h3>Perawat</h3>
-                    <h4>10</h4>
+                    <h4>200</h4>
                     <div class="container-jenis">
                         <div class="gender">
                             <h4>Laki - laki</h4> 
-                            <h3>10</h3>
+                            <h3>100</h3>
                         </div>
                         <div class="gender">
                             <h4>Perempuan</h4>
-                            <h3>15</h3>
+                            <h3>100</h3>
                         </div>
                     </div>
-                    <button><a href="">Selengkapnya >></a></button>
                 </div>
             </div>
          </div>

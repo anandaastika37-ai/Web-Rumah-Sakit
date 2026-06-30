@@ -5,11 +5,73 @@ $dataDokter = query('SELECT * FROM dokter');
 if(isset($_POST['hapus'])){
     if(Hapus($_POST['hapus'])){
         echo "<script>
-        alert('Data berhasil di dihapus');
+        alert('Data berhasil di hapus');
         document.location.href = 'index.php'
         </script>";
     }
 }
+
+if(isset($_POST['find'])){
+    $dataDokter = searchDokter($_POST['search']);
+}
+
+$hari = ['senin' , 'selasa' , 'rabu' , 'kamis' , 'jumat' , 'sabtu' , 'minggu'];
+
+$jadwalSenin = query("SELECT * FROM dokter WHERE hari_praktik = '$hari[0]'");
+$jadwalSelasa = query("SELECT * FROM dokter WHERE hari_praktik = '$hari[1]'");
+$jadwalRabu = query("SELECT * FROM dokter WHERE hari_praktik = '$hari[2]'");
+$jadwalKamis = query("SELECT * FROM dokter WHERE hari_praktik = '$hari[3]'");
+$jadwalJumat = query("SELECT * FROM dokter WHERE hari_praktik = '$hari[4]'");
+$jadwalSabtu = query("SELECT * FROM dokter WHERE hari_praktik = '$hari[5]'");
+$jadwalMinggu = query("SELECT * FROM dokter WHERE hari_praktik = '$hari[6]'");
+
+$spesialis = ['Umum' , 'Bedah' , 'Mata' , 'Anak' , 'THT' , 'Saraf'] ;
+
+$umum = query("SELECT * FROM dokter WHERE spesialis = '$spesialis[0]'");
+$bedah = query("SELECT * FROM dokter WHERE spesialis = '$spesialis[1]'");
+$mata = query("SELECT * FROM dokter WHERE spesialis = '$spesialis[2]'");
+$anak = query("SELECT * FROM dokter WHERE spesialis = '$spesialis[3]'");
+$tht = query("SELECT * FROM dokter WHERE spesialis = '$spesialis[4]'");
+$saraf = query("SELECT * FROM dokter WHERE spesialis = '$spesialis[5]'");
+
+$lakiLaki = query("SELECT * FROM dokter WHERE gender = 'laki-laki'");
+$perempuan = query("SELECT * FROM dokter WHERE gender = 'Perempuan'");
+
+$lulusan= ['S1 Kedokteran' , 'Spesialis (Sp.)' , 'Subspesialis'] ;
+
+$S1 = query("SELECT * FROM dokter WHERE lulusan = '$lulusan[0]'");
+$SP = query("SELECT * FROM dokter WHERE lulusan = '$lulusan[1]'");
+$subSp = query("SELECT * FROM dokter WHERE lulusan = '$lulusan[2]'");
+
+$kepegawaian = ['Tetap' , 'Kontrak' , 'Magang'] ;
+$tetap = query("SELECT * FROM dokter WHERE kepegawaian = '$kepegawaian[0]'");
+$kontrak = query("SELECT * FROM dokter WHERE kepegawaian = '$kepegawaian[1]'");
+$magang = query("SELECT * FROM dokter WHERE kepegawaian = '$kepegawaian[2]'");
+
+$status = ['Aktif' , 'Cuti' , 'Pensiun'] ;
+$aktif = query("SELECT * FROM dokter WHERE status_aktif = '$status[0]'");
+$cuti = query("SELECT * FROM dokter WHERE status_aktif = '$status[1]'");
+$pensiun = query("SELECT * FROM dokter WHERE status_aktif = '$status[2]'");
+
+$poli = ['Poli Umum' , 'Poli Mata' , 'Poli Anak' , 'Poli THT' , 'Poli Saraf' , 'Poli Bedah'] ;
+
+$poliUmum = query("SELECT * FROM dokter WHERE poli = '$poli[0]'");
+$poliMata = query("SELECT * FROM dokter WHERE poli = '$poli[1]'");
+$poliAnak = query("SELECT * FROM dokter WHERE poli = '$poli[2]'");
+$poliTht = query("SELECT * FROM dokter WHERE poli = '$poli[3]'");
+$poliSaraf = query("SELECT * FROM dokter WHERE poli = '$poli[4]'");
+$poliBedah = query("SELECT * FROM dokter WHERE poli = '$poli[5]'");
+
+$digramSpesialis = query("SELECT spesialis , COUNT(*) AS jumlah FROM dokter GROUP BY spesialis");
+
+$label = [];
+$data = [];
+
+foreach($digramSpesialis as $row){
+    $label[] = $row['spesialis'];
+    $data[] = $row['jumlah'];
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,8 +112,8 @@ if(isset($_POST['hapus'])){
                     <li class="Btn-laporan btn-list">
                         <span>Laporan</span>
                         <ul class="laporan navList">
-                            <li><a href="../transaksi/index.php#pasien">Laporan Pasien<i class="fa-solid fa-file-lines"></i></a></li>
-                            <li><a href="../transaksi/index.php#pengunjung">Laporan Kunjungan<i class="fa-solid fa-id-card-clip"></i></a></li>
+                            <li><a href="../laporan/index.php#pasien">Laporan Pasien<i class="fa-solid fa-file-lines"></i></a></li>
+                            <li><a href="../laporan/index.php#pengunjung">Laporan Kunjungan<i class="fa-solid fa-id-card-clip"></i></a></li>
                         </ul>
                     </li>
                     <li class="Btn-pengaturan btn-list">
@@ -83,8 +145,8 @@ if(isset($_POST['hapus'])){
                 </div>
                 <div class="ket-jmlh-dokter">
                     <h3>Jumlah Data Dokter :</h3>
-                    <h4>Jumlah Semua Data Dokter :  35</h4>
-                    <p>Rumah sakit memiliki 35 dokter yang terdiri dari dokter umum dan dokter spesialis yang siap memberikan pelayanan kesehatan kepada pasien. Jumlah ini menunjukkan kapasitas tenaga medis yang tersedia untuk mendukung pelayanan rawat jalan, rawat inap, maupun tindakan medis lainnya.</p>
+                    <h4>Jumlah Semua Data Dokter :  <?= mysqli_num_rows($dataDokter) ?></h4>
+                    <p>Rumah sakit memiliki <?= mysqli_num_rows($dataDokter) ?> dokter yang terdiri dari dokter umum dan dokter spesialis yang siap memberikan pelayanan kesehatan kepada pasien. Jumlah ini menunjukkan kapasitas tenaga medis yang tersedia untuk mendukung pelayanan rawat jalan, rawat inap, maupun tindakan medis lainnya.</p>
                     <div class="icons">
                         <i class="fa-solid fa-briefcase-medical"></i>
                         <i class="fa-solid fa-hospital"></i>
@@ -102,27 +164,39 @@ if(isset($_POST['hapus'])){
                     <div class="box-dok">
                         <ul>
                             <li>Dokter anak
-                                <span>10</span>
+                                <span>
+                                    <?php if(mysqli_num_rows($anak) > 0) { echo mysqli_num_rows($anak);} else{echo '0' ;} ?> 
+                                </span>
                             </li>
                             <li>Dokter Mata
-                                <span>10</span>
+                                <span>
+                                    <?php if(mysqli_num_rows($mata) > 0) { echo mysqli_num_rows($mata);} else{echo '0' ;} ?> 
+                                </span>
                             </li>
                             <li>Dokter Umum
-                                <span>20</span>
+                                <span>
+                                    <?php if(mysqli_num_rows($umum) > 0) { echo mysqli_num_rows($umum);} else{echo '0' ;} ?> 
+                                </span>
                             </li>
                         </ul>
                         <ul>
                             <li>
                                 Dokter THT
-                            <span>15</span>
+                            <span>
+                                <?php if(mysqli_num_rows($tht) > 0) { echo mysqli_num_rows($tht);} else{echo '0' ;} ?> 
+                            </span>
                             </li>
                             <li>
                                 Dokter Bedah
-                                <span>15</span>
+                                <span>
+                                    <?php if(mysqli_num_rows($bedah) > 0) { echo mysqli_num_rows($bedah);} else{echo '0' ;} ?> 
+                                </span>
                             </li>
                             <li>
                                 Dokter Saraf
-                                <span>15</span>
+                                <span>
+                                    <?php if(mysqli_num_rows($saraf) > 0) { echo mysqli_num_rows($saraf);} else{echo '0' ;} ?> 
+                                </span>
                             </li>
                         </ul>
                     </div>
@@ -132,11 +206,11 @@ if(isset($_POST['hapus'])){
                     <ul>
                         <li>
                             Laki-Laki
-                            <span>23</span>
+                            <span><?php if(mysqli_num_rows($lakiLaki) > 0) { echo mysqli_num_rows($lakiLaki);} else{echo '0' ;} ?> </span>
                         </li>
                         <li>
                             Perempuan
-                            <span>15</span>
+                            <span><?php if(mysqli_num_rows($perempuan) > 0) { echo mysqli_num_rows($perempuan);} else{echo '0' ;} ?> </span>
                         </li>
                     </ul>
                     <ul>
@@ -151,24 +225,36 @@ if(isset($_POST['hapus'])){
                 <div class="box-3">
                     <ul>
                         <li>S1 Kedokteran
-                            <span>20</span>
+                            <span>
+                                <?php if(mysqli_num_rows($S1) > 0) { echo mysqli_num_rows($S1);} else{echo '0' ;} ?>
+                            </span>
                         </li>
                         <li>Spesialis (Sp.)
-                            <span>20</span>
+                            <span>
+                                <?php if(mysqli_num_rows($SP) > 0) { echo mysqli_num_rows($SP);} else{echo '0' ;} ?>
+                            </span>
                         </li>
                         <li>Subspesialis
-                            <span>20</span>
+                            <span>
+                                <?php if(mysqli_num_rows($subSp) > 0) { echo mysqli_num_rows($subSp);} else{echo '0' ;} ?>
+                            </span>
                         </li>
                     </ul>
                     <ul>
                         <li>Tetap
-                            <span>20</span>
+                            <span>
+                                <?php if(mysqli_num_rows($tetap) > 0) { echo mysqli_num_rows($tetap);} else{echo '0' ;} ?>
+                            </span>
                         </li>
                         <li>Magang
-                            <span>20</span>
+                            <span>
+                                <?php if(mysqli_num_rows($magang) > 0) { echo mysqli_num_rows($magang);} else{echo '0' ;} ?>
+                            </span>
                         </li>
                         <li>Kontrak
-                            <span>20</span>
+                            <span>
+                                <?php if(mysqli_num_rows($kontrak) > 0) { echo mysqli_num_rows($kontrak);} else{echo '0' ;} ?>
+                            </span>
                         </li>
                     </ul>
                 </div>
@@ -177,20 +263,21 @@ if(isset($_POST['hapus'])){
 
             </div>
             <div class="container-data grafik grafik-persentase">
+                <canvas id="mychart">
 
+                </canvas>
             </div>
         </div>
         <div class="data-dokter-container">
             <div class="cr-data">
                 <div class="search-dokter">
-                    <form action="">
+                    <form action="" method="post">
                         <input type="text" id="search" name="search" placeholder="search">
                         <button type="submit" name="find">Search</button>
                     </form>
                 </div>
                 <div class="btn-interaktif">
                     <button><a href="formTambahDokter.php">+Tambah</a></button>
-                    <button><a href=""><i class="fa-solid fa-filter"></i>Filter</a></button>
                 </div>
             </div>
             <div class="profile-dokter" id="profile-dokter" >
@@ -211,9 +298,9 @@ if(isset($_POST['hapus'])){
                         ?>th</h3>
                         <h5>ID : <?= $data['nomor_dokter'] ?></h5>
                         <h5><?= $data['poli']?></h5>
-                        <h4><?= $data['spesialis'] ?></h4>
+                        <h4>Spesialis <?= $data['spesialis'] ?></h4>
                         <div class="btn-data">
-                            <button class="selengkapnya"><a href="">Selengkapnya</a></button>
+                            <button class="selengkapnya"><a href="detailData.php?id=<?= $data['id_dokter'] ?>">Selengkapnya</a></button>
                             <button class="edit"><a href="formEditDokter.php?id=<?= $data['id_dokter'] ?>"><i class="fa-regular fa-pen-to-square"></i></a></button>
                         <form action="" method="post">
                             <button type="submit" name="hapus" value="<?= $data['id_dokter']; ?>" class="hapus"><i class="fa-regular fa-trash-can"></i></button>
@@ -221,141 +308,226 @@ if(isset($_POST['hapus'])){
                         </div>
                     </div>
                 </div>
+                <?php endforeach; ?>
                         </div>
                     </div>
-                </div>
-                <?php endforeach; ?>
+                    <div class="kelola-jadwal-dokter" id="kelola-jadwal-dokter">
+                        <div class="jadwal-container tabel-kelola-jadwal">
+                            <div class="header">
+                                <h3>Kelola Jadwal Dokter</h3>
+                            </div>
+                            <div class="tabel-data">
+                                <?php $i = 0; ?>
+                                <?php foreach($dataDokter as $data) : ?>
+                                <div class="list-data-dokter">
+                                    <h5><?= $i + 1 ?></h5>
+                                    <img src="img/gambar-dokter.jpg" alt="">
+                                    <h3>Dokter <?= $data['nama_panggilan_dokter'] ?></h3>
+                                    <h4>ID_<?= $data['nomor_dokter'] ?></h4>
+                                    <span>Ruangan <?= $data['ruangan_praktik'] ?></span>
+                                    <span><?= $data['jam_mulai_praktik'] ?> - <?= $data['jam_selesai_praktik'] ?></span>
+                                    <button><a href="kelolaJadwalDokter.php?id=<?= $data['id_dokter'] ?>"><i class="fa-solid fa-clock-rotate-left"></i>Atur Jadwal</a></button>
+                                </div>
+                                <?php $i++; ?>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                        <div class="jadwal-container data-dokter-aktif">
+                            <div class="box-4">
+                                <h2>Data Status Dokter</h2>
+                                <ul>
+                                    <li>
+                                        <h3>Aktif</h3>
+                                        <span> <?php if(mysqli_num_rows($aktif) > 0) { echo mysqli_num_rows($aktif);} else{echo '0' ;} ?></span>
+                                    </li>
+                                    <li>
+                                        <h3>Cuti</h3>
+                                        <span> <?php if(mysqli_num_rows($cuti) > 0) { echo mysqli_num_rows($cuti);} else{echo '0' ;} ?></span>
+                                    </li>
+                                    <li>
+                                        <h3>Pensiun</h3>
+                                        <span> <?php if(mysqli_num_rows($pensiun) > 0) { echo mysqli_num_rows($pensiun);} else{echo '0' ;} ?></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="jadwal-container data-ruangan-poli">
+                            <div class="box-5">
+                                <ul>
+                                    <li>Poli Anak <span>
+                                        <span> <?php if(mysqli_num_rows($poliAnak) > 0) { echo mysqli_num_rows($poliAnak);} else{echo '0' ;} ?></span>
+                                    </span></li>
+                                    <li>Poli Mata <span>
+                                        <span> <?php if(mysqli_num_rows($poliMata) > 0) { echo mysqli_num_rows($poliMata);} else{echo '0' ;} ?></span>
+                                    </span></li>
+                                    <li>Poli Umum <span>
+                                        <span> <?php if(mysqli_num_rows($poliUmum) > 0) { echo mysqli_num_rows($poliUmum);} else{echo '0' ;} ?></span>
+                                    </span></li>
+            
+                                </ul>
+                                <ul>
+                                    <li>Poli THT <span>
+                                        <span> <?php if(mysqli_num_rows($poliTht) > 0) { echo mysqli_num_rows($poliTht);} else{echo '0' ;} ?></span>
+                                    </span></li>
+                                    <li>Poli Bedah <span>
+                                        <span> <?php if(mysqli_num_rows($poliBedah) > 0) { echo mysqli_num_rows($poliBedah);} else{echo '0' ;} ?></span>
+                                    </span></li>
+                                    <li>Poli Saraf <span>
+                                        <span> <?php if(mysqli_num_rows($poliSaraf) > 0) { echo mysqli_num_rows($poliSaraf);} else{echo '0' ;} ?></span>
+                                    </span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="jadwal-dokter">
+                        <div class="jadwal senin">
+                            <div class="ket-waktu">
+                                <h4>Senin</h4>
+                            </div>
+                            <div class="tabel-jadwal">
+                                <?php if(mysqli_num_rows($jadwalSenin) == 0) : ?>
+                                    <h1>tidak ada dokter pada di hari ini</h1>
+                                <?php endif; ?>
+                                <?php foreach($jadwalSenin as $senin) : ?>
+                                <div class="list-jadwal">
+                                    <img src="img/gambar-dokter.jpg" alt="">
+                                    <h3>Dr <?= $senin['nama_panggilan_dokter'] ?></h3>
+                                    <h4>Id : <?= $senin['nomor_dokter'] ?></h4>
+                                    <h4>Ruangan <?= $senin['ruangan_praktik'] ?></h4>
+                                    <h4><?= substr($senin['jam_mulai_praktik'],0,5) ?> - <?= substr($senin['jam_selesai_praktik'],0,5) ?></h4>
+                                    <h4><?= $senin['nama_shift'] ?> </h4>
+                                </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                        <div class="jadwal selasa">
+                            <div class="ket-waktu">
+                                <h4>Selasa</h4>
+                            </div>
+                            <div class="tabel-jadwal">
+                                <?php if(mysqli_num_rows($jadwalSelasa) == 0) : ?>
+                                    <h1>tidak ada dokter pada di hari ini</h1>
+                                <?php endif; ?>
+                                <?php foreach($jadwalSelasa as $selasa) : ?>
+                                <div class="list-jadwal">
+                                    <img src="img/gambar-dokter.jpg" alt="">
+                                    <h3>Dr <?= $selasa['nama_panggilan_dokter'] ?></h3>
+                                    <h4>Id : <?= $selasa['nomor_dokter'] ?></h4>
+                                    <h4>Ruangan <?= $selasa['ruangan_praktik'] ?></h4>
+                                    <h4><?= substr($selasa['jam_mulai_praktik'],0,5) ?> - <?= substr($selasa['jam_selesai_praktik'],0,5) ?></h4>
+                                    <h4><?= $selasa['nama_shift'] ?> </h4>
+                                </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                        <div class="jadwal rabu">
+                            <div class="ket-waktu">
+                                <h4>Rabu</h4>
+                            </div>
+                            <div class="tabel-jadwal">
+                            <?php if(mysqli_num_rows($jadwalRabu) == 0) : ?>
+                                <h1>tidak ada dokter pada di hari ini</h1>
+                            <?php endif; ?>
+                            <?php foreach($jadwalRabu as $rabu) : ?>
+                                <div class="list-jadwal">
+                                    <img src="img/gambar-dokter.jpg" alt="">
+                                    <h3>Dr <?= $rabu['nama_panggilan_dokter'] ?></h3>
+                                    <h4>Id : <?= $rabu['nomor_dokter'] ?></h4>
+                                    <h4>Ruangan <?= $rabu['ruangan_praktik'] ?></h4>
+                                    <h4><?= substr($rabu['jam_mulai_praktik'],0,5) ?> - <?= substr($rabu['jam_selesai_praktik'],0,5) ?></h4>
+                                    <h4><?= $rabu['nama_shift'] ?> </h4>
+                                </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                        <div class="jadwal kamis">
+                            <div class="ket-waktu">
+                                <h4>Kamis</h4>
+                            </div>
+                            <div class="tabel-jadwal">
+                                <?php if(mysqli_num_rows($jadwalKamis) == 0) : ?>
+                                    <h1>tidak ada dokter pada di hari ini</h1>
+                                <?php endif; ?>
+                                <?php foreach($jadwalKamis as $kamis) : ?>
+                                <div class="list-jadwal">
+                                    <img src="img/gambar-dokter.jpg" alt="">
+                                    <h3>Dr <?= $kamis['nama_panggilan_dokter'] ?></h3>
+                                    <h4>Id : <?= $kamis['nomor_dokter'] ?></h4>
+                                    <h4>Ruangan <?= $kamis['ruangan_praktik'] ?></h4>
+                                    <h4><?= substr($kamis['jam_mulai_praktik'],0,5) ?> - <?= substr($kamis['jam_selesai_praktik'],0,5) ?></h4>
+                                    <h4><?= $kamis['nama_shift'] ?> </h4>
+                                </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                        <div class="jadwal jumat">
+                            <div class="ket-waktu">
+                                <h4>Jumat</h4>
+                            </div>
+                            <div class="tabel-jadwal">
+                                <?php foreach($jadwalJumat as $jumat) : ?>
+                                <?php if(mysqli_num_rows($jadwalJumat) == 0) : ?>
+                                    <h1>tidak ada dokter pada di hari ini</h1>
+                                <?php endif; ?>
+                                <div class="list-jadwal">
+                                    <img src="img/gambar-dokter.jpg" alt="">
+                                    <h3>Dr <?= $jumat['nama_panggilan_dokter'] ?></h3>
+                                    <h4>Id : <?= $jumat['nomor_dokter'] ?></h4>
+                                    <h4>Ruangan <?= $jumat['ruangan_praktik'] ?></h4>
+                                    <h4><?= substr($jumat['jam_mulai_praktik'], 0 , 5) ?> - <?= substr($jumat['jam_selesai_praktik'],0,5) ?></h4>
+                                    <h4><?= $jumat['nama_shift'] ?> </h4>
+                                </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                        <div class="jadwal sabtu">
+                            <div class="ket-waktu">
+                                <h4>Sabtu</h4>
+                            </div>
+                            <div class="tabel-jadwal">
+                                <?php if(mysqli_num_rows($jadwalSabtu) == 0) : ?>
+                                    <h1>tidak ada dokter pada di hari ini</h1>
+                                <?php endif; ?>
+                                <?php foreach($jadwalSabtu as $sabtu) : ?>
+                                <div class="list-jadwal">
+                                    <img src="img/gambar-dokter.jpg" alt="">
+                                    <h3>Dr <?= $sabtu['nama_panggilan_dokter'] ?></h3>
+                                    <h4>Id : <?= $sabtu['nomor_dokter'] ?></h4>
+                                    <h4>Ruangan <?= $sabtu['ruangan_praktik'] ?></h4>
+                                    <h4><?= substr($sabtu['jam_mulai_praktik'] , 0 , 5) ?> - <?= substr($sabtu['jam_selesai_praktik'],0,5) ?></h4>
+                                    <h4><?= $sabtu['nama_shift'] ?> </h4>
+                                </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                        <div class="jadwal minggu">
+                            <div class="ket-waktu">
+                                <h4>Minggu</h4>
+                            </div>
+                            <div class="tabel-jadwal">
+                                <?php if(mysqli_num_rows($jadwalMinggu) == 0) : ?>
+                                    <h1>tidak ada dokter pada di hari ini</h1>
+                                <?php endif; ?>
+                                <?php foreach($jadwalMinggu as $minggu) : ?>
+                                <div class="list-jadwal">
+                                    <img src="img/gambar-dokter.jpg" alt="">
+                                    <h3>Dr <?= $minggu['nama_panggilan_dokter'] ?></h3>
+                                    <h4>Id : <?= $minggu['nomor_dokter'] ?></h4>
+                                    <h4>Ruangan <?= $minggu['ruangan_praktik'] ?></h4>
+                                    <h4><?= substr($minggu['jam_mulai_praktik'] , 0 ,5 ) ?> - <?= substr($minggu['jam_selesai_praktik'],0,5) ?></h4>
+                                    <h4><?= $minggu['nama_shift'] ?> </h4>
+                                </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+                 </div>
+                
             </div>
         </div>
-        <div class="kelola-jadwal-dokter" id="kelola-jadwal-dokter">
-            <div class="jadwal-container tabel-kelola-jadwal">
-                <div class="header">
-                    <h3>Kelola Jadwal Dokter</h3>
-                </div>
-                <div class="tabel-data">
-                    <?php $i = 0; ?>
-                    <?php foreach($dataDokter as $data) : ?>
-                    <div class="list-data-dokter">
-                        <h5><?= $i + 1 ?></h5>
-                        <img src="img/gambar-dokter.jpg" alt="">
-                        <h3>Dokter <?= $data['nama_panggilan_dokter'] ?></h3>
-                        <h4>ID_<?= $data['nomor_dokter'] ?></h4>
-                        <span>Ruangan <?= $data['ruangan_praktik'] ?></span>
-                        <span><?= $data['jam_mulai_praktik'] ?> - <?= $data['jam_selesai_praktik'] ?></span>
-                        <button><a href="kelolaJadwalDokter.php?id=<?= $data['id_dokter'] ?>"><i class="fa-solid fa-clock-rotate-left"></i>Atur Jadwal</a></button>
-                    </div>
-                    <?php $i++; ?>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-            <div class="jadwal-container data-dokter-aktif">
-                <div class="box-4">
-                    <h2>Data Status Dokter</h2>
-                    <ul>
-                        <li>
-                            <h3>Aktif</h3>
-                            <span>23</span>
-                        </li>
-                        <li>
-                            <h3>Cuti</h3>
-                            <span>23</span>
-                        </li>
-                        <li>
-                            <h3>Pensiun</h3>
-                            <span>23</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="jadwal-container data-ruangan-poli">
-                <div class="box-5">
-                    <ul>
-                        <li>Poli Anak <span>15</span></li>
-                        <li>Poli Mata <span>13</span></li>
-                        <li>Poli Umum <span>12</span></li>
-
-                    </ul>
-                    <ul>
-                        <li>Poli THT <span>10</span></li>
-                        <li>Poli Bedah <span>25</span></li>
-                        <li>Poli Saraf <span>14</span></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="jadwal-dokter">
-            <div class="jadwal senin">
-                <div class="ket-waktu">
-                    <h4>Senin</h4>
-                </div>
-                <div class="tabel-jadwal">
-                    <div class="list-jadwal">
-                        <img src="img/gambar-dokter.jpg" alt="">
-                        <h3>Nama Dokter</h3>
-                        <h4>Id : 90920293</h4>
-                        <h4>Ruangan 01</h4>
-                        <h4>07:00 - 09:00</h4>
-                    </div>
-                    <div class="list-jadwal">
-                        <img src="img/gambar-dokter.jpg" alt="">
-                        <h3>Nama Dokter</h3>
-                        <h4>Id : 90920293</h4>
-                        <h4>Ruangan 01</h4>
-                        <h4>07:00 - 09:00</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="jadwal selasa">
-                <div class="ket-waktu">
-                    <h4>Selasa</h4>
-                </div>
-                <div class="tabel-jadwal">
-                    
-                </div>
-            </div>
-            <div class="jadwal rabu">
-                <div class="ket-waktu">
-                    <h4>Rabu</h4>
-                </div>
-                <div class="tabel-jadwal">
-                    
-                </div>
-            </div>
-            <div class="jadwal kamis">
-                <div class="ket-waktu">
-                    <h4>Kamis</h4>
-                </div>
-                <div class="tabel-jadwal">
-                    
-                </div>
-            </div>
-            <div class="jadwal jumat">
-                <div class="ket-waktu">
-                    <h4>Jumat</h4>
-                </div>
-                <div class="tabel-jadwal">
-                    
-                </div>
-            </div>
-            <div class="jadwal sabtu">
-                <div class="ket-waktu">
-                    <h4>Sabtu</h4>
-                </div>
-                <div class="tabel-jadwal">
-                    
-                </div>
-            </div>
-            <div class="jadwal minggu">
-                <div class="ket-waktu">
-                    <h4>Minggu</h4>
-                </div>
-                <div class="tabel-jadwal">
-                    
-                </div>
-            </div>
-        </div>
-     </div>
     <!-- content end -->
     </div>
+
 </body>
 </html>
